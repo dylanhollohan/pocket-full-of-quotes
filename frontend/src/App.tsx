@@ -1,19 +1,24 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Home } from './pages/Home';
+import Navbar from './components/Navbar'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+        <header>
+          <Navbar/>
+        </header>
+        <div className="pages">
+          <Routes>
+            <Route
+              path="/"
+              element={<Home/>}
+            />
+          </Routes>
+        </div>
+      </BrowserRouter>
     </div>
   );
 }

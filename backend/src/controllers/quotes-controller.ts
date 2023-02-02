@@ -13,6 +13,7 @@ const getQuotes = async (req: Request, res: Response) => {
     }
 }
 
+// TODO: better error handling
 const getRandomQuotes = async (req: Request, res: Response) => {
     try {
         const quotes = await Quote.aggregate([
