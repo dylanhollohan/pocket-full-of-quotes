@@ -24,7 +24,7 @@ const App = () => {
           </Routes>
         </div>
         <footer className='footer'>
-          Created by Dylan Hollohan, 2023
+          <span id="footer-content">Created by Dylan Hollohan</span>
         </footer>
       </BrowserRouter>
     </div>
