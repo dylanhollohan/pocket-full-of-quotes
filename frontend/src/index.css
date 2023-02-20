@@ -1,49 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Cinzel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Cinzel&family=EB+Garamond&display=swap');
+
 #aurelius {
-    box-shadow: 0 2px 2px #444496;
+    box-shadow: 0 2px 2px #8a8ab4;
     border-radius: 50px;
     height: 85px;
     width: 85px;
-    margin-left: 125px;
+    padding: 5px;
+    position: relative;
     /* transition: all 75ms ease-in-out; */
     /* position: relative;
     left: 200px; */
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
-}
-
-#title {
-    font-size: 40px;
-}
-
-#mainQuote {
-    font-size: 20px;
-    width: 400px;
-}
-
-#about {
-    text-align: center;
-}
-
-.nav {
-    display: flex;
-    justify-content: flex-start;
-    
-}
-
-#quoteAndButton {
-    display: flex;
-    flex-direction: column;
-    margin-right: 15px;
-}
-
-button {
-    width: fit-content;
-    align-self: flex-end;
 }
 
 /* #aurelius:hover {
@@ -52,12 +20,162 @@ button {
     width: 76px;
 } */
 
+.header {
+    padding: 20px 10px 20px 0;
+    background: #ffffff;
+    position: relative;
+    height: 13vh;
+}
+
+.header img {
+    position: absolute;
+    left: 10%;
+    top: 50%;
+    transform: translateY(-50%)
+}
+
+body {
+    background: #f7f7fb;
+    margin: 0;
+}
+
+#title {
+    font-size: 40px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Amatic SC', cursive;
+}
+
+#about {
+    position: relative;
+    height: 70vh;
+}
+
+#about div {
+    margin-bottom: 13px;
+}
+
+.nav {
+    display: flex;
+    justify-content: flex-start;
+    padding: 20px 50px;
+    margin: 0 auto;
+    border-bottom: 1px solid #f7f7fb;
+    transition: border-bottom 1s ease-in-out;
+}
+
+.nav:hover {
+    border-bottom: 1px solid #e1e1ee;
+}
+
+.nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    padding: 0 12px;
+    color: #18181d;
+    border-radius: 8px;
+    font-family: 'EB Garamond', serif;
+
+}
+
+.nav a:hover {
+    background:#f2f2fc;
+}
+
+#quote-and-button {
+    display: inline-flex;
+    flex-direction: column;
+    position: absolute;
+    right: 1%;
+    top: 25%;
+    width: 400px;
+}
+
+.main-quote {
+    font-size: 18px;
+    font-family: 'Cinzel', serif;
+}
+
+.main-quote-author {
+    font-size: 18px;
+    font-family: 'EB Garamond', serif;
+    text-align: center;
+}
+
+.tooltip {
+    font-size: 20px;
+}
+
+button {
+    width: fit-content;
+    align-self: flex-end;
+}
+
+.pages {
+    padding: 20px;
+    margin: 0;
+}
+
+.quotes-flex {
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+
+.quotes-container {
+    max-width: 400px;
+}
+
+.quote {
+    padding: 10px 30px;
+    margin-bottom: 15px;
+    font-family: 'EB Garamond', serif;
+}
+
+.quotes-buttons {
+    font-size: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 50px 0 50px 50px;
+}
+
+.content {
+    font-size: 22px;
+}
+
+.author {
+    font-size: 18px;
+    text-align: right;
+}
+
 .footer {
-    position: fixed;
-    bottom: 0%;
+    position: relative;
+    color: #a1b6de;
     left: 50%;
     transform: translate(-50%, 0%);
-    margin-bottom: 10px;
     text-align: center;
+    height: 80px;
+    border-top: 1px solid #f7f7fb;
+    transition: border-top 1s ease-in-out;
+}
+
+.footer:hover {
+    border-top: 1px solid #e1e1ee;
+}
+
+#footer-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-size: 20px;
+    border-radius: 8px;
+    width: fit-content;
+    padding: 10px 20px;
+    background: #f2f2fc;
+    justify-content: center;
+
 }
