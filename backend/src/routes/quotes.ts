@@ -1,11 +1,11 @@
 import express from 'express';
 import { quotesController as controller }  from '../controllers';
 
-export const router = express.Router();
+export const quotesRouter = express.Router();
 
-router.get('/', controller.getQuotes);
-router.get('/shuffle', controller.getRandomQuotes);
-router.get('/:id', controller.getQuote);
-router.post('/', controller.addQuote);
-router.delete('/:id', controller.deleteQuote);
-router.patch('/:id', controller.updateQuote);
+quotesRouter.get('/', controller.getQuotes);
+quotesRouter.get('/shuffle', controller.getRandomQuotes);
+quotesRouter.get('/:id', controller.getQuote);
+quotesRouter.post('/', controller.addQuote);
+quotesRouter.delete('/:id', controller.deleteQuote);
+quotesRouter.patch('/:id', controller.updateQuote);
