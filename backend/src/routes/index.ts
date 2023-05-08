@@ -1,1 +1,2 @@
-export { router as quotesRouter } from './quotes'
+export { quotesRouter } from './quotes';
+export { authRouter } from './auth';
