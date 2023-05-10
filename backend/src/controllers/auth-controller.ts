@@ -1,16 +1,29 @@
 import { Request, Response } from 'express';
 import { User } from '../models';
+import { Mongoose, MongooseError} from 'mongoose';
 // import { } from './auth-types';
+
+const handleErrors = (err: MongooseError) => {
+  console.log(err);
+  let errors = { email: '', password: '' }
+
+  if (err.message.includes('user validation failed')) {
+    Object.values(err.errors).forEach(({ properties }) => {
+      const path: string = properties.path;
+      errors[path] = properties.message;
+    })
+  }
+  return errors;
+}
 
 const signUserUp = async (req: Request, res: Response) => {
   const { email, password, username } = req.body;
-  console.log('in handler');
   try {
     const newUser = await User.create({ email, password, username })
     res.status(201).json(newUser);
   } catch (e: any) {
-    console.log(e);
-    res.status(400).send('error, user not created');
+    const errors = handleErrors(e);
+    res.status(400).send(errors);
   }
 }
 
