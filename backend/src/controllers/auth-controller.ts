@@ -1,16 +1,23 @@
 import { Request, Response } from 'express';
 import { User } from '../models';
-import { Mongoose, MongooseError} from 'mongoose';
+import { MongooseError } from 'mongoose';
+import { MongoServerError } from 'mongodb';
 // import { } from './auth-types';
 
-const handleErrors = (err: MongooseError) => {
-  console.log(err);
+const handleErrors = (err: MongooseError | MongoServerError) => {
+  console.log(err.message, err.code);
+  console.log("typeof error: ", typeof err);
   let errors = { email: '', password: '' }
+
+  if (err.code === 11000) {
+    errors.email = 'that email is already registered';
+    return errors;
+  }
 
   if (err.message.includes('user validation failed')) {
     Object.values(err.errors).forEach(({ properties }) => {
       const path: string = properties.path;
-      errors[path] = properties.message;
+      errors[properties.path] = properties.message;
     })
   }
   return errors;
