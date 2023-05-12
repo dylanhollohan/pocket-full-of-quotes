@@ -1,9 +1,13 @@
+import { useState } from 'react';
 import { Quote } from '../components'
 import ShuffleOutlinedIcon from '@mui/icons-material/ShuffleOutlined';
 import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper';
 import MapsUgcOutlinedIcon from '@mui/icons-material/MapsUgcOutlined';
 
 export const Home: React.FC = () => {
+    const [ editingQuote, setEditingQuote ] = useState<boolean>(false);
+    
     const quotes = [
         {author: "Hugo Chavez", content: "I'm some quote thats a bit long djdhaskdhkjd"},
         {author: "jp", content: "I'm some quote thats a bit long"},
@@ -16,7 +20,7 @@ export const Home: React.FC = () => {
             <div className="quotes-container">
                 {quotes.map((quote) => {
                     return (
-                    <Quote quote={quote}></Quote>   
+                        <Quote quote={quote}></Quote>  
                     )
                 })}
             </div>
@@ -27,8 +31,8 @@ export const Home: React.FC = () => {
                 <Button  variant="text" color="info">
                     <MapsUgcOutlinedIcon htmlColor="#383939" fontSize="large"/>
                 </Button>
-                
             </div>
+            { editingQuote && <Paper>I'm going to be some edit popup</Paper> }
         </div>
     )
 };
