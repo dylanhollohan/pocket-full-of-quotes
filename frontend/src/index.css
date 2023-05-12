@@ -134,6 +134,12 @@ button {
     font-family: 'EB Garamond', serif;
 }
 
+.loginForm {
+    padding: 10px 30px;
+    margin-bottom: 15px;
+    font-family: 'EB Garamond', serif;
+}
+
 .quotes-buttons {
     font-size: 80px;
     display: flex;
