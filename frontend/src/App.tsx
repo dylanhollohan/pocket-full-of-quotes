@@ -1,15 +1,19 @@
+import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Home, About } from './pages';
-import Navbar from './components/Navbar';
-import Header from './components/Header';
+import { Home, About, Login } from './pages';
+import { Navbar, Header } from './components';
 
 const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false);
+  const handleLoggedInStatus = (status: Boolean) => {
+    setIsLoggedIn(status);
+  }
   return (
     <div>
       <BrowserRouter>
         <header>
-          <Header/>
-          <Navbar/>
+          <Header isLoggedIn={isLoggedIn}/>
+          { isLoggedIn && <Navbar/> }
         </header>
         <div className="pages">
           <Routes>
@@ -20,6 +24,10 @@ const App = () => {
             <Route
               path="/about"
               element={<About/>}
+            />
+            <Route
+              path="/login"
+              element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={handleLoggedInStatus}/>}
             />
           </Routes>
         </div>
