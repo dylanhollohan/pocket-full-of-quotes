@@ -1,33 +1,23 @@
-import { createSlice, configureStore } from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit';
+import { default as usersReducer } from '../modules/users/state/reducers';
+import { default as quotesReducer } from '../modules/quotes/state/reducers';
 
-const loginSlice = createSlice({
-  name: 'login',
-  initialState: {
-    loggedIn: false
-  },
-  reducers: {
-    loggedIn: state => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
-      state.loggedIn = true;
-    },
-    loggedOut: state => {
-      state.loggedIn = false;
-    }
+
+const store = configureStore({
+  reducer: {
+    users: usersReducer,
+    quotes: quotesReducer
   }
 })
 
-export const { loggedIn, loggedOut } = loginSlice.actions
-
-const store = configureStore({
-  reducer: loginSlice.reducer
-})
+// Infer the `RootState` and `AppDispatch` types from the store itself
+export type RootState = ReturnType<typeof store.getState>
+// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+export type AppDispatch = typeof store.dispatch
 
 // Can still subscribe to the store
-store.subscribe(() => console.log(store.getState()))
+// store.subscribe(() => console.log(store.getState()))
 
 // Still pass action objects to `dispatch`, but they're created for us
-store.dispatch(loggedIn())
-store.dispatch(loggedOut())
+// store.dispatch(loggedIn())
+// store.dispatch(loggedOut())
