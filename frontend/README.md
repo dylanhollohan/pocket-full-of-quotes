@@ -1,3 +1,8 @@
+# Front-end To-do (in order of priority):
+
+1. Finish the Quotes state, particularly the possible actions such as getQuotesRequest, getQuotesSuccess
+2. Finish setting up Redux, wrap app
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
