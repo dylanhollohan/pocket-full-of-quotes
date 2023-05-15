@@ -4,8 +4,8 @@ import { Home, About, Login } from './pages';
 import { Navbar, Header } from './components';
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false);
-  const handleLoggedInStatus = (status: Boolean) => {
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const handleLoggedInStatus = (status: boolean) => {
     setIsLoggedIn(status);
   }
   return (

@@ -1,5 +1,7 @@
+import LoginForm from '../components/LoginForm';
+
 type LoginProps = {
-  isLoggedIn: Boolean;
+  isLoggedIn: boolean;
   setIsLoggedIn: (status: boolean) => void;
 }
 
@@ -10,9 +12,7 @@ export const Login: React.FC<LoginProps> = ({
  
   return (
       <div id="login">
-          <div>
-              
-          </div>
+          <LoginForm isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
       </div>
   )
 };
