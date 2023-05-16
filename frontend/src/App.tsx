@@ -13,22 +13,13 @@ const App = () => {
       <BrowserRouter>
         <header>
           <Header isLoggedIn={isLoggedIn}/>
-          { isLoggedIn && <Navbar/> }
+          <Navbar/>
         </header>
         <div className="pages">
           <Routes>
-            <Route
-              path="/"
-              element={<Home/>}
-            />
-            <Route
-              path="/about"
-              element={<About/>}
-            />
-            <Route
-              path="/login"
-              element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={handleLoggedInStatus}/>}
-            />
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={handleLoggedInStatus} />} />
           </Routes>
         </div>
         <footer className='footer'>

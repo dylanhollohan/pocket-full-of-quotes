@@ -18,9 +18,9 @@ export const Home: React.FC = () => {
     return (
         <div className="quotes-flex">
             <div className="quotes-container">
-                {quotes.map((quote) => {
+                {quotes.map((quote, index) => {
                     return (
-                        <Quote quote={quote}></Quote>  
+                        <Quote quote={quote} key={`${quote.author}-${index}`}></Quote>  
                     )
                 })}
             </div>

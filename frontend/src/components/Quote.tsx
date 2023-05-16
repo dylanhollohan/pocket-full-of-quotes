@@ -6,7 +6,7 @@ type QuoteDetails = {
 };
 
 type QuoteProps = {
-  quote: QuoteDetails,
+  quote: QuoteDetails
 }
 
 const Quote: React.FC<QuoteProps> = ({

@@ -15,22 +15,24 @@ type LoginFormProps = {
   setIsLoggedIn: (status: boolean) => void;
 }
 
-const Quote: React.FC<LoginFormProps> = ({
+const LoginForm: React.FC<LoginFormProps> = ({
   isLoggedIn,
   setIsLoggedIn
 }) => {
   return (
     <Paper className="loginPaper">
       <FormControl>
-      <InputLabel htmlFor="my-input">Email address</InputLabel>
-      <Input id="emailInput"/>
+        <div><InputLabel htmlFor="email-input">Email address</InputLabel></div>
+        <Input id="email-input" type="email" required/>
+        <InputLabel htmlFor="password-input">Password</InputLabel>
+        <Input id="password-input" required type="password" placeholder="enter password"/>
+        <Box display="flex">
+          <Button>Sign Up</Button>
+          <Button>Sign In</Button>
+        </Box>
       </FormControl>
-      <Box display="flex">
-        <Button>Sign Up</Button>
-        <Button>Sign In</Button>
-      </Box>
     </Paper>
   );
 }
 
-export default Quote;
+export default LoginForm;
