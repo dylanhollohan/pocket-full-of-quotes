@@ -9,9 +9,8 @@ export const Login: React.FC<LoginProps> = ({
   isLoggedIn,
   setIsLoggedIn
 }) => {
- 
   return (
-      <div id="login">
+      <div id="login-container">
           <LoginForm isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
       </div>
   )

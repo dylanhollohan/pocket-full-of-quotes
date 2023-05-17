@@ -20,17 +20,20 @@ const LoginForm: React.FC<LoginFormProps> = ({
   setIsLoggedIn
 }) => {
   return (
-    <Paper className="loginPaper">
-      <FormControl>
-        <div><InputLabel htmlFor="email-input">Email address</InputLabel></div>
+    <Paper id="login-paper">
+      <h1 id="login-header">Log In</h1>
+      <FormControl id="email-input-wrapper">
+        <InputLabel htmlFor="email-input">Email address</InputLabel>
         <Input id="email-input" type="email" required/>
+      </FormControl>
+      <FormControl id="password-input-wrapper">
         <InputLabel htmlFor="password-input">Password</InputLabel>
         <Input id="password-input" required type="password" placeholder="enter password"/>
-        <Box display="flex">
-          <Button>Sign Up</Button>
-          <Button>Sign In</Button>
-        </Box>
       </FormControl>
+      <Box id="login-button-wrapper">
+        <Button variant="contained">Sign Up</Button>
+        <Button variant="contained">Sign In</Button>
+      </Box>
     </Paper>
   );
 }

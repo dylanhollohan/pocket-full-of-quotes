@@ -20,6 +20,12 @@
     width: 76px;
 } */
 
+h1 {
+    padding: 20px 12px;
+    color: #18181d;
+    font-family: 'EB Garamond', serif;
+}
+
 .header {
     padding: 20px 10px 20px 0;
     background: #ffffff;
@@ -77,7 +83,6 @@ body {
     color: #18181d;
     border-radius: 8px;
     font-family: 'EB Garamond', serif;
-
 }
 
 .nav a:hover {
@@ -156,6 +161,59 @@ button {
     font-size: 18px;
     text-align: right;
 }
+/*/ to change */
+#login-container {
+    max-width: 400px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    text-align: center;
+    align-items: center;
+}
+
+#login-header {
+    margin-bottom: 10px;
+}
+
+#login-button-wrapper {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+#login-paper {
+    display: flex;
+    flex-direction: column;
+}
+
+#email-input-wrapper {
+    width: 300px;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+#email-input #password-input {
+    font-size: 24px;
+}
+
+#email-input {
+    font-size: 24px;
+}
+
+#password-input-wrapper {
+    width: 300px;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.quote {
+    padding: 10px 30px;
+    margin-bottom: 15px;
+    font-family: 'EB Garamond', serif;
+}
 
 .footer {
     position: relative;
@@ -183,5 +241,4 @@ button {
     padding: 10px 20px;
     background: #f2f2fc;
     justify-content: center;
-
 }
