@@ -12,9 +12,6 @@ const Navbar: React.FC = () => {
             <Link to="/about">
                 <h1>About</h1>
             </Link>
-            <Link to="/login">
-                <h1>Login In</h1>
-            </Link>
         </nav>
     );
 };
