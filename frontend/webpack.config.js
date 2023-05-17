@@ -37,6 +37,9 @@ module.exports = {
   devtool: 'eval-source-map',
   devServer: {
     static: './public',
+    historyApiFallback: {
+      index: 'index.html', // clutch: https://stackoverflow.com/questions/31945763/how-to-tell-webpack-dev-server-to-serve-index-html-for-any-route/34125010#34125010
+    },
   },
   output: {
     filename: 'bundle.js',
