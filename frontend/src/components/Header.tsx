@@ -2,6 +2,7 @@ import Aurelius from '../../public/aurelius.png';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import LogoutIcon from '@mui/icons-material/Logout';
+import './styles/Header.css';
 
 type HeaderProps = {
   isLoggedIn: Boolean;
@@ -9,7 +10,7 @@ type HeaderProps = {
 
 const Header: React.FC<HeaderProps> = ({ isLoggedIn }) => {
   return (
-    <div className="header">
+    <header>
       <img id="aurelius" src={Aurelius} alt='Aurelius Nav'/>
       <span id="title">Pocket Full of Quotes</span>
       <span id="quote-and-button">
@@ -31,7 +32,7 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn }) => {
           </Tooltip>
         )}
       </span>
-    </div>
+    </header>
   )
 }
 

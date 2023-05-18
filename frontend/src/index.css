@@ -26,20 +26,6 @@ h1 {
     font-family: 'EB Garamond', serif;
 }
 
-.header {
-    padding: 20px 10px 20px 0;
-    background: #ffffff;
-    position: relative;
-    height: 13vh;
-}
-
-.header img {
-    position: absolute;
-    left: 10%;
-    top: 50%;
-    transform: translateY(-50%)
-}
-
 body {
     background: #f7f7fb;
     margin: 0;
@@ -61,32 +47,6 @@ body {
 
 #about div {
     margin-bottom: 13px;
-}
-
-.nav {
-    display: flex;
-    justify-content: flex-start;
-    padding: 20px 50px;
-    margin: 0 auto;
-    border-bottom: 1px solid #f7f7fb;
-    transition: border-bottom 1s ease-in-out;
-}
-
-.nav:hover {
-    border-bottom: 1px solid #e1e1ee;
-}
-
-.nav a {
-    margin-left: 20px;
-    text-decoration: none;
-    padding: 0 12px;
-    color: #18181d;
-    border-radius: 8px;
-    font-family: 'EB Garamond', serif;
-}
-
-.nav a:hover {
-    background:#f2f2fc;
 }
 
 #quote-and-button {
@@ -214,4 +174,3 @@ button {
     margin-bottom: 15px;
     font-family: 'EB Garamond', serif;
 }
-

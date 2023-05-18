@@ -1,0 +1,31 @@
+.nav {
+  display: flex;
+  justify-content: flex-start;
+  padding: 20px 50px;
+  margin: 0 auto;
+  border-bottom: 1px solid #f7f7fb;
+  transition: border-bottom 1s ease-in-out;
+}
+
+.nav:hover {
+  border-bottom: 1px solid #e1e1ee;
+}
+
+.nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  padding: 0 12px;
+  color: #18181d;
+  border-radius: 8px;
+  font-family: 'EB Garamond', serif;
+}
+
+.nav a:hover {
+  background:#f2f2fc;
+}
+
+.nav h1 {
+  padding: 20px 12px;
+  color: #18181d;
+  font-family: 'EB Garamond', serif;
+}

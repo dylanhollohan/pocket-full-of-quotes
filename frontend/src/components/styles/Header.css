@@ -1,0 +1,13 @@
+header {
+  padding: 20px 10px 20px 0;
+  background: #ffffff;
+  position: relative;
+  height: 13vh;
+}
+
+header img {
+  position: absolute;
+  left: 10%;
+  top: 50%;
+  transform: translateY(-50%)
+}
