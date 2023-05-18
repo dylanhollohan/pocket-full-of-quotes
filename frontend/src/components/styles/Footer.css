@@ -1,0 +1,27 @@
+.footer {
+  position: relative;
+  color: #a1b6de;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  text-align: center;
+  height: 80px;
+  border-top: 1px solid #f7f7fb;
+  transition: border-top 1s ease-in-out;
+}
+
+.footer:hover {
+  border-top: 1px solid #e1e1ee;
+}
+
+.footer-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  border-radius: 8px;
+  width: fit-content;
+  padding: 10px 20px;
+  background: #f2f2fc;
+  justify-content: center;
+}

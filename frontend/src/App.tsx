@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Home, About, Login } from './pages';
-import { Navbar, Header } from './components';
+import { Navbar, Header, Footer } from './components';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
@@ -22,9 +22,7 @@ const App = () => {
             <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={handleLoggedInStatus} />} />
           </Routes>
         </div>
-        <footer className='footer'>
-          <span id="footer-content">Created by Dylan Hollohan</span>
-        </footer>
+        <Footer/>
       </BrowserRouter>
     </div>
   );
