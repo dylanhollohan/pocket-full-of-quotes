@@ -1,7 +1,7 @@
 export const About: React.FC = () => {
     // TODO: include some images representing the technologies I used.
     return (
-        <div id="about">
+        <div className="about">
             <div>
                 <div>The app is a demonstration of my love of reading... and listening to audiobooks, I suppose.</div>
                 <div>It was and continues to be created with great care, and of course Node.js, React, Redux, redux-thunk, and MongoDB/Mongoose.</div>
