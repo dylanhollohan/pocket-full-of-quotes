@@ -1,0 +1,14 @@
+.quote {
+  padding: 10px 30px;
+  margin-bottom: 15px;
+  font-family: 'EB Garamond', serif;
+}
+
+.content {
+  font-size: 22px;
+}
+
+.author {
+  font-size: 18px;
+  text-align: right;
+}

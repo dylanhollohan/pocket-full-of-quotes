@@ -1,4 +1,5 @@
 import Paper from '@mui/material/Paper';
+import './styles/Quote.css'
 
 type QuoteDetails = {
   content: string;

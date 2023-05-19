@@ -2,24 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Cinzel&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Cinzel&family=EB+Garamond&display=swap');
 
-#aurelius {
-    box-shadow: 0 2px 2px #8a8ab4;
-    border-radius: 50px;
-    height: 85px;
-    width: 85px;
-    padding: 5px;
-    position: relative;
-    /* transition: all 75ms ease-in-out; */
-    /* position: relative;
-    left: 200px; */
-}
-
-/* #aurelius:hover {
-    box-shadow: 0 8px 15px #444496;
-    height: 76px;
-    width: 76px;
-} */
-
 h1 {
     padding: 20px 12px;
     color: #18181d;
@@ -29,20 +11,6 @@ h1 {
 body {
     background: #f7f7fb;
     margin: 0;
-}
-
-#title {
-    font-size: 40px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-family: 'Amatic SC', cursive;
-}
-
-#about {
-    position: relative;
-    height: 70vh;
 }
 
 #about div {
@@ -58,20 +26,7 @@ body {
     width: 400px;
 }
 
-.main-quote {
-    font-size: 18px;
-    font-family: 'Cinzel', serif;
-}
 
-.main-quote-author {
-    font-size: 18px;
-    font-family: 'EB Garamond', serif;
-    text-align: center;
-}
-
-.tooltip {
-    font-size: 20px;
-}
 
 button {
     width: fit-content;
@@ -81,22 +36,6 @@ button {
 .pages {
     padding: 20px;
     margin: 0;
-}
-
-.quotes-flex {
-    display: flex;
-    position: relative;
-    justify-content: center;
-}
-
-.quotes-container {
-    max-width: 400px;
-}
-
-.quote {
-    padding: 10px 30px;
-    margin-bottom: 15px;
-    font-family: 'EB Garamond', serif;
 }
 
 .loginForm {
@@ -113,14 +52,7 @@ button {
     padding: 50px 0 50px 50px;
 }
 
-.content {
-    font-size: 22px;
-}
 
-.author {
-    font-size: 18px;
-    text-align: right;
-}
 /*/ to change */
 #login-container {
     max-width: 400px;
@@ -167,10 +99,4 @@ button {
     margin: auto;
     margin-bottom: 20px;
     margin-top: 10px;
-}
-
-.quote {
-    padding: 10px 30px;
-    margin-bottom: 15px;
-    font-family: 'EB Garamond', serif;
 }
