@@ -5,6 +5,8 @@ import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import MapsUgcOutlinedIcon from '@mui/icons-material/MapsUgcOutlined';
 
+import './styles/Home.css';
+
 export const Home: React.FC = () => {
     const [ editingQuote, setEditingQuote ] = useState<boolean>(false);
     
