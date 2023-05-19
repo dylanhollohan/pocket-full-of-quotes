@@ -11,8 +11,8 @@ type HeaderProps = {
 const Header: React.FC<HeaderProps> = ({ isLoggedIn }) => {
   return (
     <header>
-      <img id="aurelius" src={Aurelius} alt='Aurelius Nav'/>
-      <span id="title">Pocket Full of Quotes</span>
+      <img className="aurelius" src={Aurelius} alt='Aurelius Nav'/>
+      <span className="title">Pocket Full of Quotes</span>
       <span id="quote-and-button">
         <div className="main-quote">
         "A classic book is a book that has never finished saying what it has to say"
