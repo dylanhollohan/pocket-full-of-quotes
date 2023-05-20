@@ -5,6 +5,8 @@ import Input from '@mui/material/Input';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 
+import './styles/LoginForm.css';
+
 // type QuoteDetails = {
 //   content: string;
 //   author: string;
@@ -20,17 +22,17 @@ const LoginForm: React.FC<LoginFormProps> = ({
   setIsLoggedIn
 }) => {
   return (
-    <Paper id="login-paper">
-      <h1 id="login-header">Log In</h1>
-      <FormControl id="email-input-wrapper">
+    <Paper className="login-paper">
+      <h1 className="login-header">Log In</h1>
+      <FormControl className="email-input-wrapper">
         <InputLabel htmlFor="email-input">Email address</InputLabel>
-        <Input id="email-input" type="email" required/>
+        <Input className="email-input" type="email" required/>
       </FormControl>
-      <FormControl id="password-input-wrapper">
+      <FormControl className="password-input-wrapper">
         <InputLabel htmlFor="password-input">Password</InputLabel>
-        <Input id="password-input" required type="password" placeholder="enter password"/>
+        <Input className="password-input" required type="password" placeholder="enter password"/>
       </FormControl>
-      <Box id="login-button-wrapper">
+      <Box className="login-button-wrapper">
         <Button variant="contained">Sign Up</Button>
         <Button variant="contained">Sign In</Button>
       </Box>
