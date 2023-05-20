@@ -1,0 +1,8 @@
+.login-container {
+  max-width: 400px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  text-align: center;
+  align-items: center;
+}

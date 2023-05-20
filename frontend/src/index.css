@@ -13,90 +13,13 @@ body {
     margin: 0;
 }
 
-#about div {
-    margin-bottom: 13px;
-}
-
-#quote-and-button {
-    display: inline-flex;
-    flex-direction: column;
-    position: absolute;
-    right: 1%;
-    top: 25%;
-    width: 400px;
-}
-
-
-
-button {
-    width: fit-content;
-    align-self: flex-end;
-}
-
 .pages {
     padding: 20px;
     margin: 0;
 }
 
-.loginForm {
+/* .loginForm {
     padding: 10px 30px;
     margin-bottom: 15px;
     font-family: 'EB Garamond', serif;
-}
-
-.quotes-buttons {
-    font-size: 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 50px 0 50px 50px;
-}
-
-
-/*/ to change */
-#login-container {
-    max-width: 400px;
-    position: relative;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    text-align: center;
-    align-items: center;
-}
-
-#login-header {
-    margin-bottom: 10px;
-}
-
-#login-button-wrapper {
-    display: flex;
-    justify-content: space-around;
-    padding-top: 20px;
-    padding-bottom: 40px;
-}
-
-#login-paper {
-    display: flex;
-    flex-direction: column;
-}
-
-#email-input-wrapper {
-    width: 300px;
-    margin: auto;
-    margin-bottom: 20px;
-    margin-top: 10px;
-}
-
-#email-input #password-input {
-    font-size: 24px;
-}
-
-#email-input {
-    font-size: 24px;
-}
-
-#password-input-wrapper {
-    width: 300px;
-    margin: auto;
-    margin-bottom: 20px;
-    margin-top: 10px;
-}
+} */
