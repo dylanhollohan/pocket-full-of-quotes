@@ -1,3 +1,5 @@
+import './styles/About.css';
+
 export const About: React.FC = () => {
     // TODO: include some images representing the technologies I used.
     return (

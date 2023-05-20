@@ -1,4 +1,10 @@
 .about {
   position: relative;
-  height: 70vh;
+  font-size: 24px;
+  height: 50vh;
+  text-align: center;
+}
+
+.about div {
+  margin-bottom: 13px;
 }
