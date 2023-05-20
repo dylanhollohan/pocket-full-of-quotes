@@ -53,3 +53,17 @@ header img {
 .tooltip {
   font-size: 20px;
 }
+
+.quote-and-button {
+  display: inline-flex;
+  flex-direction: column;
+  position: absolute;
+  right: 1%;
+  top: 25%;
+  width: 400px;
+}
+
+button {
+  width: fit-content;
+  align-self: flex-end;
+} /* which button is this for? I think the nav-bar exit*/ 

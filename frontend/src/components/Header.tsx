@@ -13,24 +13,24 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn }) => {
     <header>
       <img className="aurelius" src={Aurelius} alt='Aurelius Nav'/>
       <span className="title">Pocket Full of Quotes</span>
-      <span id="quote-and-button">
+      <span className="quote-and-button">
         <div className="main-quote">
         "A classic book is a book that has never finished saying what it has to say"
         </div>
         <span className="main-quote-author">- Italo Calvino</span>
-        { isLoggedIn && (
-          <Tooltip 
-            title="Log out"
-            arrow
-            placement="left"
-            enterDelay={500}
-            enterNextDelay={500}
-          >
-            <Button variant='text' color="info">
-              <LogoutIcon htmlColor="#383939" fontSize="large"/>
-            </Button>
-          </Tooltip>
-        )}
+        
+        <Tooltip 
+          title="Log out"
+          arrow
+          placement="left"
+          enterDelay={500}
+          enterNextDelay={500}
+        >
+          <Button variant='text' color="info">
+            <LogoutIcon htmlColor="#383939" fontSize="large"/>
+          </Button>
+        </Tooltip>
+      
       </span>
     </header>
   )
