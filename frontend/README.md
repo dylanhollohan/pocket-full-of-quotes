@@ -1,7 +1,10 @@
 # Front-end To-do (in order of priority):
 
-1. Finish the Quotes state, particularly the possible actions such as getQuotesRequest, getQuotesSuccess
-2. Finish setting up Redux, wrap app
+1. create hello world thunks to call
+2. call hello world thunks from login form to confirm it's connected
+3. create real authentication thunks to be hooked up to login buttons
+4. hook up auth thunks to login form
+5. Finish the Quotes state, particularly the possible actions such as getQuotesRequest, getQuotesSuccess
 
 # Getting Started with Create React App
 
