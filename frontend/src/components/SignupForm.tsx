@@ -5,25 +5,29 @@ import Input from '@mui/material/Input';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 
-import './styles/LoginForm.css';
+import './styles/SignupForm.css';
 
 // type QuoteDetails = {
 //   content: string;
 //   author: string;
 // };
 
-type LoginFormProps = {
+type SignupFormProps = {
   isLoggedIn: boolean;
   setIsLoggedIn: (status: boolean) => void;
 }
 
-const LoginForm: React.FC<LoginFormProps> = ({
+const SignupForm: React.FC<SignupFormProps> = ({
   isLoggedIn,
   setIsLoggedIn
 }) => {
   return (
-    <Paper className="login-paper">
-      <h1 className="login-header">Log In</h1>
+    <Paper className="signup-paper">
+      <h1 className="signup-header">Sign Up</h1>
+      <FormControl className="username-input-wrapper">
+        <InputLabel htmlFor="username-input">Username</InputLabel>
+        <Input id="username-input" type="text" required/>
+      </FormControl>
       <FormControl className="email-input-wrapper">
         <InputLabel htmlFor="email-input">Email address</InputLabel>
         <Input id="email-input" type="email" required/>
@@ -32,12 +36,12 @@ const LoginForm: React.FC<LoginFormProps> = ({
         <InputLabel htmlFor="password-input">Password</InputLabel>
         <Input id="password-input" required type="password" placeholder="enter password"/>
       </FormControl>
-      <Box className="login-button-wrapper">
-        <Button variant="contained">Log In</Button>
-        <Button variant="contained">Go to Sign Up page</Button>
+      <Box className="signup-button-wrapper">
+        <Button variant="contained">Sign Up</Button>
+        <Button variant="contained">go to Sign In page</Button>
       </Box>
     </Paper>
   );
 }
 
-export default LoginForm;
+export default SignupForm;
