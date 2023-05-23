@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Home, About, Login } from './pages';
+import { Home, About, Login, Signup } from './pages';
 import { Navbar, Header, Footer } from './components';
 import './index.css';
 
@@ -19,6 +19,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={handleLoggedInStatus} />} />
+            <Route path="/signup" element={<Signup isLoggedIn={isLoggedIn} setIsLoggedIn={handleLoggedInStatus} />} />
           </Routes>
         </div>
         <Footer/>
