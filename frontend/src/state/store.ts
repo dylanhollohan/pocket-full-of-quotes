@@ -3,7 +3,7 @@ import { default as usersReducer } from '../modules/users/state/reducers';
 import { default as quotesReducer } from '../modules/quotes/state/reducers';
 
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
     users: usersReducer,
     quotes: quotesReducer
