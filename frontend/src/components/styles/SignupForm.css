@@ -14,24 +14,23 @@
   flex-direction: column;
 }
 
-.email-input-wrapper {
+.signup__input-wrapper {
   width: 300px;
-  margin: auto;
-  margin-bottom: 20px;
-  margin-top: 10px;
+  align-self: center;
 }
 
-.email-input #password-input {
+#signup__password-input {
   font-size: 24px;
 }
 
-.email-input {
+#signup__email-input {
   font-size: 24px;
 }
 
-.password-input-wrapper {
-  width: 300px;
-  margin: auto;
-  margin-bottom: 20px;
-  margin-top: 10px;
+#signup__username-input {
+  font-size: 24px;
+}
+
+.v-space {
+  height: 20px;
 }

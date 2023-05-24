@@ -24,21 +24,24 @@ const SignupForm: React.FC<SignupFormProps> = ({
   return (
     <Paper className="signup-paper">
       <h1 className="signup-header">Sign Up</h1>
-      <FormControl className="username-input-wrapper">
-        <InputLabel htmlFor="username-input">Username</InputLabel>
-        <Input id="username-input" type="text" required/>
+      <FormControl className="signup__input-wrapper">
+        <InputLabel htmlFor="signup__username-input">Username</InputLabel>
+        <Input id="signup__username-input" type="text" required/>
       </FormControl>
-      <FormControl className="email-input-wrapper">
-        <InputLabel htmlFor="email-input">Email address</InputLabel>
-        <Input id="email-input" type="email" required/>
+      <div className="v-space"/>
+      <FormControl className="signup__input-wrapper">
+        <InputLabel htmlFor="signup__email-input">Email address</InputLabel>
+        <Input id="signup__email-input" type="email" required/>
       </FormControl>
-      <FormControl className="password-input-wrapper">
-        <InputLabel htmlFor="password-input">Password</InputLabel>
-        <Input id="password-input" required type="password" placeholder="enter password"/>
+      <div className="v-space"/>
+      <FormControl className="signup__input-wrapper">
+        <InputLabel htmlFor="signup__password-input">Password</InputLabel>
+        <Input id="signup__password-input" required type="password" placeholder="enter password"/>
       </FormControl>
+      <div className="v-space"/>
       <Box className="signup-button-wrapper">
         <Button variant="contained">Sign Up</Button>
-        <Button variant="contained">go to Sign In page</Button>
+        <Button variant="contained">go to Log In page</Button>
       </Box>
     </Paper>
   );
