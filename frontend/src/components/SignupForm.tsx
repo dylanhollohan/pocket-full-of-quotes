@@ -7,8 +7,9 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 
 import './styles/SignupForm.css';
-import { useAppDispatch } from '../state/hooks';
-import { fetchDummy } from '../modules/users/state';  // may be able to shorten
+import { useAppDispatch, useAppSelector } from '../state/hooks';
+import { signupRequest } from '../modules/users/state';
+import { selectSignupRequestStatus } from '../modules/users/state/selectors';
 
 // type QuoteDetails = {
 //   content: string;
@@ -25,6 +26,9 @@ const SignupForm: React.FC<SignupFormProps> = ({
   setIsLoggedIn
 }) => {
   const dispatch = useAppDispatch();
+  const signupStatus = useAppSelector(selectSignupRequestStatus);
+  console.log(signupStatus);
+
   const [username, setUsername] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -42,10 +46,16 @@ const SignupForm: React.FC<SignupFormProps> = ({
   } 
 
   const handleSignup = () => {
-    dispatch(fetchDummy(
-      username
-    ));
+    dispatch(signupRequest({
+      username,
+      email,
+      password
+    }));
   }
+
+  // grab global state of the signup request, and determine where to conditionally render some error messages if the state is FAILED (could include error message in red
+  // inside the v-space sections)
+  // if sign up success, redirect to the login page
 
   return (
     <Paper className="signup-paper">
