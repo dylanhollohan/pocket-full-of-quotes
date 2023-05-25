@@ -1,24 +1,38 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { User } from '../types';
-import { LoginRequestStatus, LogoutRequestStatus } from '../constants';
+import type { User, SignupError } from '../types';
+import { LoginRequestStatus, LogoutRequestStatus, SignupRequestStatus } from '../constants';
 
 export interface UserState {
   loggedInUser: User | null;
-  loginRequestStatus: LoginRequestStatus
-  logoutRequestStatus: LogoutRequestStatus
+  loginRequestStatus: LoginRequestStatus;
+  logoutRequestStatus: LogoutRequestStatus;
+  signupRequestStatus: SignupRequestStatus;
+  signupError?: SignupError;
 }
 
 // Define the initial state using that type
 const initialState: UserState = {
   loggedInUser: null,
   loginRequestStatus: LoginRequestStatus.IDLE,
-  logoutRequestStatus: LogoutRequestStatus.IDLE
+  logoutRequestStatus: LogoutRequestStatus.IDLE,
+  signupRequestStatus: SignupRequestStatus.IDLE,
 }
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
+    signupRequest: state => {
+      state.signupRequestStatus = SignupRequestStatus.PENDING;
+    },
+    signupSuccess: state => {
+      state.signupRequestStatus = SignupRequestStatus.SUCCESS;
+    },
+    signupFail: (state, action: PayloadAction<SignupError>) => {
+      state.signupRequestStatus = SignupRequestStatus.FAILURE;
+      state.signupError = action.payload;
+    },
+    // need to reset signupRequestStatus after the user is redirected to login page, or some other trigger.
     loginRequest: state => {
       state.loginRequestStatus = LoginRequestStatus.PENDING;
     },
