@@ -1,10 +1,30 @@
 .about {
   position: relative;
   font-size: 24px;
-  height: 50vh;
+  height: 60vh;
   text-align: center;
 }
 
-.about div {
+.about-content div {
   margin-bottom: 13px;
+}
+
+.about img {
+  margin: 8px;
+}
+
+.flexContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0px;
+}
+
+div.label {
+  width: 30%;
+  text-align: right;
+}
+
+.image-wrapper {
+  position: relative;
+  flex-grow: 2;
 }
