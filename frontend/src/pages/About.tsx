@@ -67,12 +67,12 @@ export const About: React.FC = () => {
                 <div className='flexContainer'>
                     <div className='label'>Back-end tech stack:</div>
                     <div className="image-wrapper">
-                        <img  src={nodejs} alt='NodeJS logo'/>
                         <img  src={typescript} alt='Typescript logo'/>
+                        <img  src={nodejs} alt='NodeJS logo'/>
                         <img src={mongo} alt='MongoDB logo'/>
                         <img src={mongoose} alt='Mongoose logo'/>
-                        <img  src={jest} alt='Jest logo'/>
                         <img  src={postman} alt='Postman logo'/>
+                        <img  src={jest} alt='Jest logo'/>
                     </div>
                 </div>
                 <div className='flexContainer'>
