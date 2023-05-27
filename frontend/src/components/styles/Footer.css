@@ -2,6 +2,7 @@
   position: relative;
   color: #a1b6de;
   left: 50%;
+  bottom: 10%;
   transform: translate(-50%, 0%);
   text-align: center;
   height: 80px;
