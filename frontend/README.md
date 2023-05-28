@@ -1,10 +1,11 @@
 # Front-end To-do (in order of priority):
 
-1.
-2. create API layer that abstracts axios calls into a client
-3. create real authentication thunks to be hooked up to login buttons
-4. hook up auth thunks to login form
+1. Review cookies / JSON webtoken theory
+2. create real authentication thunks to be hooked up to login buttons
+3. hook up auth thunks to login form
+4. create API layer that abstracts axios calls into a client
 5. Finish the Quotes state, particularly the possible actions such as getQuotesRequest, getQuotesSuccess
+6. clean up passwords to use visibility toggle iconbutton from materialUI
 
 # Getting Started with Create React App
 
