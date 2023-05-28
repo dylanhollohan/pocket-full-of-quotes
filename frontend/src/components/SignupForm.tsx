@@ -5,16 +5,12 @@ import InputLabel from '@mui/material/InputLabel';
 import Input from '@mui/material/Input';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import FormHelperText from '@mui/material/FormHelperText';
 
 import './styles/SignupForm.css';
 import { useAppDispatch, useAppSelector } from '../state/hooks';
 import { signupRequest } from '../modules/users/state';
 import { selectSignupRequestStatus } from '../modules/users/state/selectors';
-
-// type QuoteDetails = {
-//   content: string;
-//   author: string;
-// };
 
 type SignupFormProps = {
   isLoggedIn: boolean;
@@ -72,7 +68,15 @@ const SignupForm: React.FC<SignupFormProps> = ({
       <div className="v-space"/>
       <FormControl className="signup__input-wrapper">
         <InputLabel htmlFor="signup__password-input">Password</InputLabel>
-        <Input id="signup__password-input" required type="password" placeholder="enter password" value={password} onChange={handlePasswordChange}/>
+        <Input
+          id="signup__password-input"
+          required
+          type="password"
+          placeholder="enter password"
+          value={password}
+          onChange={handlePasswordChange}
+        />
+        {/* <FormHelperText error>some text</FormHelperText> */}
       </FormControl>
       <div className="v-space"/>
       <Box className="signup-button-wrapper">
