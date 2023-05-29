@@ -3,14 +3,15 @@ import { SignupPayload } from '../types';
 import { signupSuccess, signupFail } from './actions';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:4000/api',
+  baseURL: 'http://localhost:4000/api'
 });
 
-// fetchTodoById is the "thunk action creator"
+// signupRequest is the "thunk action creator"
 export function signupRequest(payload: SignupPayload) {
-  // fetchTodoByIdThunk is the "thunk function"
+  // signupRequestThunk is the "thunk function"
   return async function signupRequestThunk(dispatch, getState) {
     try {
+      // Note that Axios automatically serializes payload as JSON (stringify)
       const response  = await axiosInstance({
         method: 'post',
         url: '/auth/signup',

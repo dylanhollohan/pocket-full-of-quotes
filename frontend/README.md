@@ -1,6 +1,6 @@
 # Front-end To-do (in order of priority):
 
-1. Review cookies / JSON webtoken theory
+1. Debug why cookie not being received
 2. create real authentication thunks to be hooked up to login buttons
 3. hook up auth thunks to login form
 4. create API layer that abstracts axios calls into a client
