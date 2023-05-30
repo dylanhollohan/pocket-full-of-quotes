@@ -15,6 +15,7 @@ export function signupRequest(payload: SignupPayload) {
       const response  = await axiosInstance({
         method: 'post',
         url: '/auth/signup',
+        withCredentials: true,
         data: payload
       });
       console.log(response);

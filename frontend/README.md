@@ -7,6 +7,11 @@
 5. Finish the Quotes state, particularly the possible actions such as getQuotesRequest, getQuotesSuccess
 6. clean up passwords to use visibility toggle iconbutton from materialUI
 
+# Regarding CORS, Cookies, Axios, JWT and other:
+
+This article sort of saved the day when all hope was lost that I couldn't store cookies that had been sent from one local port (backend) to a different local port:
+https://11kesarwaniyash.medium.com/json-web-token-with-cookies-55135cd978dd
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

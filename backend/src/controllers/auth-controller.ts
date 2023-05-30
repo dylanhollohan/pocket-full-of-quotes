@@ -28,7 +28,7 @@ config();
 
 const maxAge = 3 * 24 * 60 * 60;
 
-const createToken = (id) => {
+const createToken = (id: any) => {
   return jwt.sign({ id }, process.env.JWT_SECRET || 'backupJwtSecret2484758275', {
     expiresIn: maxAge
   } )

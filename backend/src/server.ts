@@ -9,10 +9,15 @@ config();
 
 const app: Express = express();
 const port = process.env.PORT;
+const corsOptions = {
+    origin: ['http://localhost:8080'],
+    credentials: true,
+    exposedHeaders: ["Authorization"]
+}
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin: 'http://localhost:8080'}))
+app.use(cors(corsOptions));
 app.use('/api/quotes', quotesRouter);
 app.use('/api/auth', authRouter);
 
