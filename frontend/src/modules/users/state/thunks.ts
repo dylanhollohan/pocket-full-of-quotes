@@ -19,7 +19,14 @@ export function signupRequest(payload: SignupPayload) {
         data: payload
       });
       console.log(response);
-      dispatch(signupSuccess());
+      // @ts-ignore
+      if (!response.errors) {
+        dispatch(signupSuccess());
+      } else {
+        // @ts-ignore
+        dispatch(signupFail(response.errors))
+        // use reducers to set error messages in global, and then clear them when a new signup request is made, or otherwise navigation is used.
+      }
     } catch (error) {
       dispatch(signupFail({ message: "theres an error"}))
     }
