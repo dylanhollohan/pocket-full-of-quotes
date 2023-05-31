@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Paper from '@mui/material/Paper';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
@@ -11,6 +12,7 @@ import './styles/SignupForm.css';
 import { useAppDispatch, useAppSelector } from '../state/hooks';
 import { signupRequest } from '../modules/users/state';
 import { selectSignupRequestStatus } from '../modules/users/state/selectors';
+import { SignupRequestStatus } from '../modules/users/constants';
 
 type SignupFormProps = {
   isLoggedIn: boolean;
@@ -22,8 +24,10 @@ const SignupForm: React.FC<SignupFormProps> = ({
   setIsLoggedIn
 }) => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const signupStatus = useAppSelector(selectSignupRequestStatus);
   console.log(signupStatus);
+  // above will become a selector on the logged-in user check for redirecting elsewhere.
 
   const [username, setUsername] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -48,6 +52,12 @@ const SignupForm: React.FC<SignupFormProps> = ({
       password
     }));
   }
+
+  useEffect(() => {
+    if (signupStatus === SignupRequestStatus.SUCCESS) {
+      navigate('/');
+    }
+  }, [signupStatus])
 
   // grab global state of the signup request, and determine where to conditionally render some error messages if the state is FAILED (could include error message in red
   // inside the v-space sections)
