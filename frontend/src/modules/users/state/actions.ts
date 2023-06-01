@@ -4,6 +4,7 @@ export const {
   signupRequest,
   signupSuccess,
   signupFail,
+  resetSignup,
   loginRequest,
   loginSuccess,
   logoutRequest,
