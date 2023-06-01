@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { SignupPayload } from '../types';
+import axios, { AxiosResponse } from 'axios';
+import { SignupRequestPayload, SignupSuccessPayload } from '../types';
 import { signupSuccess, signupFail } from './actions';
 
 const axiosInstance = axios.create({
@@ -7,12 +7,12 @@ const axiosInstance = axios.create({
 });
 
 // signupRequest is the "thunk action creator"
-export function signupRequest(payload: SignupPayload) {
+export function signupRequest(payload: SignupRequestPayload) {
   // signupRequestThunk is the "thunk function"
   return async function signupRequestThunk(dispatch, getState) {
     try {
       // Note that Axios automatically serializes payload as JSON (stringify)
-      const response  = await axiosInstance({
+      const response: AxiosResponse<SignupSuccessPayload>  = await axiosInstance({
         method: 'post',
         url: '/auth/signup',
         withCredentials: true,
@@ -20,8 +20,10 @@ export function signupRequest(payload: SignupPayload) {
       });
       console.log(response);
       // @ts-ignore
-      if (!response.errors) {
-        dispatch(signupSuccess());
+      if (response.data.userId) {
+
+        // @ts-ignore
+        dispatch(signupSuccess({ userId: response.data.userId}));
       } else {
         // @ts-ignore
         dispatch(signupFail(response.errors))
