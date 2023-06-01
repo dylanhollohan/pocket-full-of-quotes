@@ -1,13 +1,19 @@
-import { useState } from 'react';
-import { Quote } from '../components'
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ShuffleOutlinedIcon from '@mui/icons-material/ShuffleOutlined';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import MapsUgcOutlinedIcon from '@mui/icons-material/MapsUgcOutlined';
 
+import { useAppSelector } from '../state/hooks';
+import { selectLoggedInUser } from '../modules/users/state/selectors';
+import { Quote } from '../components';
+
 import './styles/Home.css';
 
 export const Home: React.FC = () => {
+    const navigate = useNavigate();
+    const currentUser = useAppSelector(selectLoggedInUser);
     const [ editingQuote, setEditingQuote ] = useState<boolean>(false);
     
     const quotes = [
@@ -17,6 +23,13 @@ export const Home: React.FC = () => {
         {author: "jp", content: "I'm some quote thats a bit long djdhaskdhkjd I'm some quote thats a bit long djdhaskdhkjd I'm some quote thats a bit long djdhaskdhkjd"},
         {author: "Jordan B. Peterson", content: "I'm some quote thats a bit long djdhaskdhkjd"}
     ];
+
+    useEffect(() => {
+        if (!currentUser) {
+            navigate('/login');
+        }
+    }, [currentUser, navigate])
+
     return (
         <div className="quotes-flex">
             <div className="quotes-container">
