@@ -40,7 +40,7 @@ const signUserUp = async (req: Request, res: Response) => {
     const newUser = await User.create({ email, password, username });
     const token = createToken(newUser._id);
     res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
-    res.status(201).json({ user: newUser._id });
+    res.status(201).json({ userId: newUser._id });
   } catch (e: any) {
     const errors = handleErrors(e);
     res.status(400).json({ errors });
