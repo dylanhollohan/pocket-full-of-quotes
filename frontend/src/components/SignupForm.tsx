@@ -6,11 +6,12 @@ import InputLabel from '@mui/material/InputLabel';
 import Input from '@mui/material/Input';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import FormHelperText from '@mui/material/FormHelperText';
+// import FormHelperText from '@mui/material/FormHelperText';
 
 import './styles/SignupForm.css';
 import { useAppDispatch, useAppSelector } from '../state/hooks';
 import { signupRequest } from '../modules/users/state';
+import { resetSignup } from '../modules/users/state/actions';
 import { selectSignupRequestStatus } from '../modules/users/state/selectors';
 import { SignupRequestStatus } from '../modules/users/constants';
 
@@ -53,10 +54,12 @@ const SignupForm: React.FC<SignupFormProps> = ({
     }));
   }
 
+  // @ts-ignore
   useEffect(() => {
     if (signupStatus === SignupRequestStatus.SUCCESS) {
       navigate('/');
     }
+    return () => dispatch(resetSignup);
   }, [signupStatus])
 
   // grab global state of the signup request, and determine where to conditionally render some error messages if the state is FAILED (could include error message in red
