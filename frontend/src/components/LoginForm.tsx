@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import Paper from '@mui/material/Paper';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
@@ -5,6 +7,8 @@ import Input from '@mui/material/Input';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 
+import { useAppSelector } from '../state/hooks';
+import { selectLoggedInUser } from '../modules/users/state/selectors';
 import './styles/LoginForm.css';
 
 // type QuoteDetails = {
@@ -21,6 +25,15 @@ const LoginForm: React.FC<LoginFormProps> = ({
   isLoggedIn,
   setIsLoggedIn
 }) => {
+  const navigate = useNavigate();
+  const currentUser = useAppSelector(selectLoggedInUser);
+
+  useEffect(() => {
+    if (currentUser) {
+      navigate('/');
+    }
+  }, [currentUser, navigate]);
+
   return (
     <Paper className="login-paper">
       <h1 className="login-header">Log In</h1>
@@ -36,7 +49,9 @@ const LoginForm: React.FC<LoginFormProps> = ({
       <div className="v-space"/>
       <Box className="login-button-wrapper">
         <Button variant="contained">Log In</Button>
-        <Button variant="contained">Go to Sign Up page</Button>
+        <Link to="/signup">
+          <Button variant="contained">Go to Sign Up page</Button>
+        </Link>
       </Box>
     </Paper>
   );
