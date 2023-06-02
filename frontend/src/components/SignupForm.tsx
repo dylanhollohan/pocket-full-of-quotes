@@ -15,15 +15,7 @@ import { resetSignup } from '../modules/users/state/actions';
 import { selectSignupRequestStatus } from '../modules/users/state/selectors';
 import { SignupRequestStatus } from '../modules/users/constants';
 
-type SignupFormProps = {
-  isLoggedIn: boolean;
-  setIsLoggedIn: (status: boolean) => void;
-}
-
-const SignupForm: React.FC<SignupFormProps> = ({
-  isLoggedIn,
-  setIsLoggedIn
-}) => {
+const SignupForm: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const signupStatus = useAppSelector(selectSignupRequestStatus);
