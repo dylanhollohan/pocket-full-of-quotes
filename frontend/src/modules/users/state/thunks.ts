@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { SignupRequestPayload, LoginRequestPayload, SignupSuccessPayload, LoginSuccessPayload } from '../types';
-import { signupSuccess, signupFail, loginFail } from './actions';
+import { signupSuccess, signupFail, loginFail, loginSuccess } from './actions';
 
 const axiosInstance = axios.create({
   baseURL: 'http://localhost:4000/api'
@@ -37,7 +37,7 @@ export function signupRequest(payload: SignupRequestPayload) {
 export function loginRequest(payload: LoginRequestPayload) {
   return async function loginRequestThunk(dispatch, getState) {
     try {
-      const response: AxiosResponse<LoginSuccessPayload>  = await axiosInstance({
+      const response: AxiosResponse<LoginSuccessPayload> = await axiosInstance({
         method: 'post',
         url: '/auth/login',
         withCredentials: true,

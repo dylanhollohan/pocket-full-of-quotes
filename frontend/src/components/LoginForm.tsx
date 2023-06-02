@@ -37,6 +37,7 @@ const LoginForm: React.FC = () => {
       email,
       password
     }));
+    setPassword("");
   }
 
   useEffect(() => {
@@ -59,9 +60,9 @@ const LoginForm: React.FC = () => {
       </FormControl>
       <div className="v-space"/>
       <Box className="login-button-wrapper">
-        <Button variant="contained">Log In</Button>
+        <Button variant="contained" onClick={handleLogin}>Log In</Button>
         <Link to="/signup">
-          <Button variant="contained" onClick={handleLogin}>Go to Sign Up page</Button>
+          <Button variant="contained">Go to Sign Up page</Button>
         </Link>
       </Box>
     </Paper>
