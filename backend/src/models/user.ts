@@ -22,13 +22,30 @@ const userSchema = new Schema(
       required: true,
     }
   },
-  { timestamps: true }
+  { 
+    timestamps: true,
+    statics: {
+      async login(email, password) {
+        const user = await this.findOne({ email });
+        if (user) {
+          const authorized = await bcrypt.compare(password, user.password);
+          if (authorized) {
+            return user;
+          }
+          throw Error('incorrect password')
+        } 
+        throw Error('no such email');
+      } 
+    }
+   }
 );
 
-userSchema.pre('save', async function (next) {
+userSchema.pre('save', async function(next) {
   const salt = await bcrypt.genSalt();
   this.password = await bcrypt.hash(this.password, salt);
   next();
 });
+
+
 
 export const User = mongoose.model("User", userSchema);
