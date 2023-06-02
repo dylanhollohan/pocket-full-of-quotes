@@ -3,12 +3,24 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import LogoutIcon from '@mui/icons-material/Logout';
 import './styles/Header.css';
+import { useAppDispatch, useAppSelector } from '../state/hooks';
+import { logoutRequest } from '../modules/users/state/actions';
+import { selectLogoutRequestStatus } from '../modules/users/state/selectors';
 
 type HeaderProps = {
   isLoggedIn: Boolean;
 }
 
 const Header: React.FC<HeaderProps> = ({ isLoggedIn }) => {
+  const dispatch = useAppDispatch();
+  const logoutStatus = useAppSelector(selectLogoutRequestStatus);
+  
+  const handleLogout = () => {
+    dispatch(logoutRequest);
+  }
+  // still need reducer and success action
+  console.log('logoutStatus');
+
   return (
     <header>
       <img className="aurelius" src={Aurelius} alt='Aurelius Nav'/>
@@ -26,7 +38,7 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn }) => {
           enterDelay={500}
           enterNextDelay={500}
         >
-          <Button variant='text' color="info">
+          <Button variant='text' color="info" onClick={handleLogout}>
             <LogoutIcon htmlColor="#383939" fontSize="large"/>
           </Button>
         </Tooltip>
