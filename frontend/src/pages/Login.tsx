@@ -1,18 +1,15 @@
 import LoginForm from '../components/LoginForm';
 import './styles/Login.css';
 
-type LoginProps = {
-  isLoggedIn: boolean;
-  setIsLoggedIn: (status: boolean) => void;
-}
+// type LoginProps = {
+//   isLoggedIn: boolean;
+//   setIsLoggedIn: (status: boolean) => void;
+// }
 
-export const Login: React.FC<LoginProps> = ({ 
-  isLoggedIn,
-  setIsLoggedIn
-}) => {
+export const Login: React.FC = () => {
   return (
       <div className="login-container">
-          <LoginForm isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
+          <LoginForm/>
       </div>
   )
 };
