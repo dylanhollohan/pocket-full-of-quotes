@@ -7,6 +7,7 @@ export const {
   resetSignup,
   loginRequest,
   loginSuccess,
+  loginFail,
   logoutRequest,
   logoutSuccess,
 } = userSlice.actions

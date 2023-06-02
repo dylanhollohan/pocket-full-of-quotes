@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { SignupError, SignupSuccessPayload, LoginSuccessPayload } from '../types';
+import type { SignupError, LoginError, SignupSuccessPayload, LoginSuccessPayload } from '../types';
 import { LoginRequestStatus, LogoutRequestStatus, SignupRequestStatus } from '../constants';
 
 export interface UserState {
@@ -42,12 +42,12 @@ export const userSlice = createSlice({
       state.loginRequestStatus = LoginRequestStatus.PENDING;
     },
     loginSuccess: (state, action: PayloadAction<LoginSuccessPayload>) => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
       state.loginRequestStatus = LoginRequestStatus.IDLE
       state.loggedInUser = action.payload.userId;
+    },
+    loginFail: (state, action: PayloadAction<LoginError>) => {
+      state.signupRequestStatus = SignupRequestStatus.FAILURE;
+      state.signupError = action.payload;
     },
     logoutRequest: state => {
       state.logoutRequestStatus = LogoutRequestStatus.PENDING;
