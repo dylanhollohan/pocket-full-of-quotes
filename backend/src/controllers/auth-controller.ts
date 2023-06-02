@@ -48,10 +48,14 @@ const signUserUp = async (req: Request, res: Response) => {
 }
 
 const logUserIn = async (req: Request, res: Response) => {
+  const { email, password } = req.body;
   try {
-      
+      const user = await User.login(email, password);
+      const token = createToken(user._id);
+      res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
+      res.status(200).json({ user: user._id }); 
   } catch (e: any) {
-      res.json({ error: e });
+      res.status(400).json({ error: e });
   }
 }
 
