@@ -1,21 +1,20 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { SignupError, LoginError, SignupSuccessPayload, LoginSuccessPayload } from '../types';
-import { LoginRequestStatus, LogoutRequestStatus, SignupRequestStatus } from '../constants';
+import { RequestStatus } from '../constants';
 
 export interface UserState {
   loggedInUser: String | null;
-  loginRequestStatus: LoginRequestStatus;
-  logoutRequestStatus: LogoutRequestStatus;
-  signupRequestStatus: SignupRequestStatus;
+  loginRequestStatus: RequestStatus;
+  logoutRequestStatus: RequestStatus;
+  signupRequestStatus: RequestStatus;
   signupError?: SignupError;
 }
 
-// Define the initial state using that type
 const initialState: UserState = {
   loggedInUser: null,
-  loginRequestStatus: LoginRequestStatus.IDLE,
-  logoutRequestStatus: LogoutRequestStatus.IDLE,
-  signupRequestStatus: SignupRequestStatus.IDLE,
+  loginRequestStatus: RequestStatus.IDLE,
+  logoutRequestStatus: RequestStatus.IDLE,
+  signupRequestStatus: RequestStatus.IDLE,
 }
 
 export const userSlice = createSlice({
@@ -23,38 +22,41 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     signupRequest: state => {
-      state.signupRequestStatus = SignupRequestStatus.PENDING;
+      state.signupRequestStatus = RequestStatus.PENDING;
     },
     signupSuccess: (state, action: PayloadAction<SignupSuccessPayload>) => {
-      state.signupRequestStatus = SignupRequestStatus.SUCCESS;
+      state.signupRequestStatus = RequestStatus.SUCCESS;
       state.loggedInUser = action.payload.userId
     },
     signupFail: (state, action: PayloadAction<SignupError>) => {
-      state.signupRequestStatus = SignupRequestStatus.FAILURE;
+      state.signupRequestStatus = RequestStatus.FAILURE;
       state.signupError = action.payload;
     },
     resetSignup: state => {
-      state.signupRequestStatus = SignupRequestStatus.IDLE;
+      state.signupRequestStatus = RequestStatus.IDLE;
       state.signupError = undefined;
     },
     // need to reset signupRequestStatus after the user is redirected to login page, or some other trigger.
     loginRequest: state => {
-      state.loginRequestStatus = LoginRequestStatus.PENDING;
+      state.loginRequestStatus = RequestStatus.PENDING;
     },
     loginSuccess: (state, action: PayloadAction<LoginSuccessPayload>) => {
-      state.loginRequestStatus = LoginRequestStatus.IDLE
+      state.loginRequestStatus = RequestStatus.IDLE
       state.loggedInUser = action.payload.userId;
     },
     loginFail: (state, action: PayloadAction<LoginError>) => {
-      state.signupRequestStatus = SignupRequestStatus.FAILURE;
+      state.signupRequestStatus = RequestStatus.FAILURE;
       state.signupError = action.payload;
     },
     logoutRequest: state => {
-      state.logoutRequestStatus = LogoutRequestStatus.PENDING;
+      state.logoutRequestStatus = RequestStatus.PENDING;
     },
     logoutSuccess: state => {
-      state.loginRequestStatus = LoginRequestStatus.IDLE
+      state.loginRequestStatus = RequestStatus.SUCCESS;
       state.loggedInUser = null;
+    },
+    resetLogout: state => {
+      state.logoutRequestStatus = RequestStatus.IDLE;
     }
   }
 })
