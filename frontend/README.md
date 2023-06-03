@@ -1,11 +1,10 @@
 # Front-end To-do (in order of priority):
 
-1. Debug why cookie not being received
-2. create real authentication thunks to be hooked up to login buttons
-3. hook up auth thunks to login form
-4. create API layer that abstracts axios calls into a client
-5. Finish the Quotes state, particularly the possible actions such as getQuotesRequest, getQuotesSuccess
-6. clean up passwords to use visibility toggle iconbutton from materialUI
+1. logout on backend route
+2. create custom theme for grey colors
+3. create API layer that abstracts axios calls into a client
+4. Finish the Quotes state, particularly the possible actions such as getQuotesRequest, getQuotesSuccess
+5. clean up passwords to use visibility toggle iconbutton from materialUI
 
 # Regarding CORS, Cookies, Axios, JWT and other:
 
