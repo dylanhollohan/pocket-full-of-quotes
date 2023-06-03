@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import Paper from '@mui/material/Paper';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
@@ -13,7 +13,7 @@ import { useAppDispatch, useAppSelector } from '../state/hooks';
 import { signupRequest } from '../modules/users/state';
 import { resetSignup } from '../modules/users/state/actions';
 import { selectSignupRequestStatus } from '../modules/users/state/selectors';
-import { SignupRequestStatus } from '../modules/users/constants';
+import { RequestStatus } from '../modules/users/constants';
 
 const SignupForm: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -48,11 +48,11 @@ const SignupForm: React.FC = () => {
 
   // @ts-ignore
   useEffect(() => {
-    if (signupStatus === SignupRequestStatus.SUCCESS) {
+    if (signupStatus === RequestStatus.SUCCESS) {
       navigate('/');
     }
     return () => dispatch(resetSignup);
-  }, [signupStatus])
+  }, [dispatch, navigate, signupStatus])
 
   // grab global state of the signup request, and determine where to conditionally render some error messages if the state is FAILED (could include error message in red
   // inside the v-space sections)
@@ -86,7 +86,9 @@ const SignupForm: React.FC = () => {
       <div className="v-space"/>
       <Box className="signup-button-wrapper">
         <Button variant="contained" onClick={handleSignup}>Sign Up</Button>
-        <Button variant="contained">go to Log In page</Button>
+        <Link to="/login">
+          <Button variant="contained">go to Log In page</Button>
+        </Link>
       </Box>
     </Paper>
   );
