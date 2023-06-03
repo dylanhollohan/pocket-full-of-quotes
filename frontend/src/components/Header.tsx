@@ -1,25 +1,36 @@
-import Aurelius from '../../public/aurelius.png';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import LogoutIcon from '@mui/icons-material/Logout';
+
+import Aurelius from '../../public/aurelius.png';
 import './styles/Header.css';
 import { useAppDispatch, useAppSelector } from '../state/hooks';
-import { logoutRequest } from '../modules/users/state/actions';
-import { selectLogoutRequestStatus } from '../modules/users/state/selectors';
+import { logoutRequest, resetLogout } from '../modules/users/state/actions';
+import { selectLoggedInUser, selectLogoutRequestStatus } from '../modules/users/state/selectors';
+import { RequestStatus } from '../modules/users/constants';
 
-type HeaderProps = {
-  isLoggedIn: Boolean;
-}
-
-const Header: React.FC<HeaderProps> = ({ isLoggedIn }) => {
+const Header: React.FC = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const logoutStatus = useAppSelector(selectLogoutRequestStatus);
+  const loggedInUser = useAppSelector(selectLoggedInUser);
   
   const handleLogout = () => {
     dispatch(logoutRequest);
   }
   // still need reducer and success action
   console.log('logoutStatus');
+
+  // @ts-ignore
+  useEffect(() => {
+    if (logoutStatus === RequestStatus.SUCCESS) {
+      navigate('/login');
+    }
+    return () => dispatch(resetLogout);
+  }, [dispatch, navigate, logoutStatus])
+
 
   return (
     <header>
@@ -38,8 +49,14 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn }) => {
           enterDelay={500}
           enterNextDelay={500}
         >
-          <Button variant='text' color="info" onClick={handleLogout}>
-            <LogoutIcon htmlColor="#383939" fontSize="large"/>
+          <Button
+            variant={loggedInUser ? 'text' : 'outlined'}
+            color="info"
+            disabled={!!loggedInUser}
+            onClick={handleLogout}
+            endIcon={<LogoutIcon htmlColor={loggedInUser ? '#383939' : '#888989'} fontSize="large"/>}
+            >
+            Logout
           </Button>
         </Tooltip>
       
