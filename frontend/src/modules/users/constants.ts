@@ -1,18 +1,6 @@
-export enum LoginRequestStatus {
+export enum RequestStatus {
   IDLE = "idle",
   PENDING = "pending",
+  SUCCESS = "success", 
   FAILURE = "failure"
-}
-
-export enum LogoutRequestStatus {
-  IDLE = "idle",
-  PENDING = "pending",
-  FAILURE = "failure"
-}
-
-export enum SignupRequestStatus {
-  IDLE = "idle",
-  PENDING = "pending",
-  FAILURE = "failure",
-  SUCCESS = "success"
 }
