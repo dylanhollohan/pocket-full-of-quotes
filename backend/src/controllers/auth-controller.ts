@@ -60,11 +60,9 @@ const logUserIn = async (req: Request, res: Response) => {
 }
 
 const logUserOut = async (req: Request, res: Response) => {
-  try {
-      console.log('ello mate');
-  } catch (e: any) {
-      res.json({ error: e });
-  }
+  console.log('logout in backend')
+  res.cookie('jwt', '', { maxAge: 1 });
+  res.status(200).json({message: "logged out"});
 }
 
 export const authController = {

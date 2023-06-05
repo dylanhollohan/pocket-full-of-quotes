@@ -51,7 +51,7 @@ const SignupForm: React.FC = () => {
     if (signupStatus === RequestStatus.SUCCESS) {
       navigate('/');
     }
-    return () => dispatch(resetSignup);
+    return () => dispatch(resetSignup());
   }, [dispatch, navigate, signupStatus])
 
   // grab global state of the signup request, and determine where to conditionally render some error messages if the state is FAILED (could include error message in red

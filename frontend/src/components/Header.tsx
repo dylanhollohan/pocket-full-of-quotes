@@ -7,7 +7,8 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import Aurelius from '../../public/aurelius.png';
 import './styles/Header.css';
 import { useAppDispatch, useAppSelector } from '../state/hooks';
-import { logoutRequest, resetLogout } from '../modules/users/state/actions';
+import { logoutRequest } from '../modules/users/state';
+import { resetLogout } from '../modules/users/state/actions';
 import { selectLoggedInUser, selectLogoutRequestStatus } from '../modules/users/state/selectors';
 import { RequestStatus } from '../modules/users/constants';
 
@@ -20,8 +21,6 @@ const Header: React.FC = () => {
   const handleLogout = () => {
     dispatch(logoutRequest);
   }
-  // still need reducer and success action
-  console.log('logoutStatus');
 
   // @ts-ignore
   useEffect(() => {
@@ -52,7 +51,7 @@ const Header: React.FC = () => {
           <Button
             variant={loggedInUser ? 'text' : 'outlined'}
             color="info"
-            disabled={!!loggedInUser}
+            disabled={!loggedInUser}
             onClick={handleLogout}
             endIcon={<LogoutIcon htmlColor={loggedInUser ? '#383939' : '#888989'} fontSize="large"/>}
             >
