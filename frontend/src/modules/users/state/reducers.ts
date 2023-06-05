@@ -52,8 +52,11 @@ export const userSlice = createSlice({
       state.logoutRequestStatus = RequestStatus.PENDING;
     },
     logoutSuccess: state => {
-      state.loginRequestStatus = RequestStatus.SUCCESS;
+      state.logoutRequestStatus = RequestStatus.SUCCESS;
       state.loggedInUser = null;
+    },
+    logoutFail: state => {
+      state.logoutRequestStatus = RequestStatus.FAILURE;
     },
     resetLogout: state => {
       state.logoutRequestStatus = RequestStatus.IDLE;

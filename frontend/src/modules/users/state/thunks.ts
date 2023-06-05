@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { SignupRequestPayload, LoginRequestPayload, SignupSuccessPayload, LoginSuccessPayload } from '../types';
-import { signupSuccess, signupFail, loginFail, loginSuccess } from './actions';
+import { signupSuccess, signupFail, loginFail, logoutFail, loginSuccess, logoutSuccess } from './actions';
 
 const axiosInstance = axios.create({
   baseURL: 'http://localhost:4000/api'
@@ -55,6 +55,29 @@ export function loginRequest(payload: LoginRequestPayload) {
       }
     } catch (error) {
       dispatch(loginFail({ message: "theres an error"}))
+    }
+  }
+}
+
+export function logoutRequest() {
+  return async function logoutRequestThunk(dispatch) {
+    try {
+      const response: AxiosResponse = await axiosInstance({
+        method: 'get',
+        url: '/auth/logout',
+        withCredentials: true,
+      });
+      console.log('logout response: ', response)
+      // @ts-ignore
+      if (response.status === 200) {
+        // @ts-ignore
+        dispatch(logoutSuccess());
+      } else {
+        // @ts-ignore
+        dispatch(logoutFail())
+      }
+    } catch (error) {
+      dispatch(logoutFail())
     }
   }
 }
