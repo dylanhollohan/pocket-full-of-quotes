@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Tooltip from '@mui/material/Tooltip';
 import ShuffleOutlinedIcon from '@mui/icons-material/ShuffleOutlined';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
@@ -40,12 +41,28 @@ export const Home: React.FC = () => {
                 })}
             </div>
             <div className="quotes-buttons">
-                <Button variant="text" color="info">
-                    <ShuffleOutlinedIcon htmlColor="#383939" fontSize="large"/>
-                </Button>
-                <Button  variant="text" color="info">
-                    <MapsUgcOutlinedIcon htmlColor="#383939" fontSize="large"/>
-                </Button>
+                <Tooltip 
+                    title={<h3 className="quotes-tooltip">Shuffle Quotes</h3>}
+                    arrow
+                    placement="right"
+                    enterDelay={500}
+                    enterNextDelay={500}
+                    >
+                    <Button variant="text" color="info">
+                        <ShuffleOutlinedIcon htmlColor="#383939" fontSize="large"/>
+                    </Button>
+                </Tooltip>
+                <Tooltip 
+                    title={<h3 className="quotes-tooltip">Add Quote</h3>}
+                    arrow
+                    placement="right"
+                    enterDelay={500}
+                    enterNextDelay={500}
+                    >
+                    <Button variant="text" color="info">
+                        <MapsUgcOutlinedIcon htmlColor="#383939" fontSize="large"/>
+                    </Button>
+                </Tooltip>
             </div>
             { editingQuote && <Paper>I'm going to be some edit popup</Paper> }
         </div>

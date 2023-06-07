@@ -15,3 +15,7 @@
   justify-content: space-between;
   padding: 50px 0 50px 50px;
 }
+
+.quotes-tooltip {
+  font-size: 14px;
+}
