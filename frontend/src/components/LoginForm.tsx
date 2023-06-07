@@ -12,11 +12,6 @@ import { selectLoggedInUser } from '../modules/users/state/selectors';
 import { loginRequest } from '../modules/users/state';
 import './styles/LoginForm.css';
 
-// type QuoteDetails = {
-//   content: string;
-//   author: string;
-// };
-
 const LoginForm: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
