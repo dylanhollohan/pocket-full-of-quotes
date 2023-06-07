@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 import Aurelius from '../../public/aurelius.png';
@@ -19,15 +18,15 @@ const Header: React.FC = () => {
   const loggedInUser = useAppSelector(selectLoggedInUser);
   
   const handleLogout = () => {
-    dispatch(logoutRequest);
+    dispatch(logoutRequest());
   }
 
   // @ts-ignore
   useEffect(() => {
     if (logoutStatus === RequestStatus.SUCCESS) {
+      dispatch(resetLogout());
       navigate('/login');
     }
-    return () => dispatch(resetLogout);
   }, [dispatch, navigate, logoutStatus])
 
 
@@ -41,13 +40,7 @@ const Header: React.FC = () => {
         </div>
         <span className="main-quote-author">- Italo Calvino</span>
         
-        <Tooltip 
-          title="Log out"
-          arrow
-          placement="left"
-          enterDelay={500}
-          enterNextDelay={500}
-        >
+        { loggedInUser && 
           <Button
             variant={loggedInUser ? 'text' : 'outlined'}
             color="info"
@@ -57,7 +50,7 @@ const Header: React.FC = () => {
             >
             Logout
           </Button>
-        </Tooltip>
+        }
       
       </span>
     </header>
