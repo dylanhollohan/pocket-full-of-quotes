@@ -1,6 +1,6 @@
 # Front-end To-do (in order of priority):
 
-1. logout on backend route
+1. create a modal for adding quotes which open on button click of the "+"
 2. create custom theme for grey colors
 3. create API layer that abstracts axios calls into a client
 4. Finish the Quotes state, particularly the possible actions such as getQuotesRequest, getQuotesSuccess
