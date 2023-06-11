@@ -32,7 +32,6 @@ const LoginForm: React.FC = () => {
       email,
       password
     }));
-    setPassword("");
   }
 
   useEffect(() => {
