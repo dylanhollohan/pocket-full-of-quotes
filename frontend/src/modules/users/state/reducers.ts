@@ -8,6 +8,7 @@ export interface UserState {
   logoutRequestStatus: RequestStatus;
   signupRequestStatus: RequestStatus;
   signupError?: SignupError;
+  loginError?: LoginError;
 }
 
 const initialState: UserState = {
@@ -45,8 +46,8 @@ export const userSlice = createSlice({
       state.loggedInUser = action.payload.userId;
     },
     loginFail: (state, action: PayloadAction<LoginError>) => {
-      state.signupRequestStatus = RequestStatus.FAILURE;
-      state.signupError = action.payload;
+      state.loginRequestStatus = RequestStatus.FAILURE;
+      state.loginError = action.payload;
     },
     logoutRequest: state => {
       state.logoutRequestStatus = RequestStatus.PENDING;
