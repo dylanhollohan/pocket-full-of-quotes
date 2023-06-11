@@ -3,7 +3,7 @@ import { SignupRequestPayload, LoginRequestPayload, SignupSuccessPayload, LoginS
 import { signupSuccess, signupFail, loginFail, logoutFail, loginSuccess, logoutSuccess } from './actions';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:4000/api'
+  baseURL: 'http://localhost:4000/api/auth'
 });
 
 // signupRequest is the "thunk action creator"
@@ -14,7 +14,7 @@ export function signupRequest(payload: SignupRequestPayload) {
       // Note that Axios automatically serializes payload as JSON (stringify)
       const response: AxiosResponse<SignupSuccessPayload>  = await axiosInstance({
         method: 'post',
-        url: '/auth/signup',
+        url: '/signup',
         withCredentials: true,
         data: payload
       });
@@ -39,8 +39,7 @@ export function loginRequest(payload: LoginRequestPayload) {
     try {
       const response: AxiosResponse<LoginSuccessPayload> = await axiosInstance({
         method: 'post',
-        url: '/auth/login',
-        withCredentials: true,
+        url: '/login',
         data: payload
       });
       console.log('login response: ', response);
@@ -64,7 +63,7 @@ export function logoutRequest() {
     try {
       const response: AxiosResponse = await axiosInstance({
         method: 'get',
-        url: '/auth/logout',
+        url: '/logout',
         withCredentials: true,
       });
       console.log('logout response: ', response)
