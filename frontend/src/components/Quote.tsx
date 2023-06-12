@@ -4,6 +4,7 @@ import './styles/Quote.css'
 type QuoteDetails = {
   content: string;
   author: string;
+  source?: string;
 };
 
 type QuoteProps = {
@@ -17,6 +18,7 @@ const Quote: React.FC<QuoteProps> = ({
     <Paper className="quote">
       <div className="content">{quote.content}</div>
       <div className="author">- {quote.author}</div>
+      { quote.source && <div className="source">via {quote.source}</div> }
     </Paper>
   );
 }
