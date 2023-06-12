@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import Tooltip from '@mui/material/Tooltip';
 import ShuffleOutlinedIcon from '@mui/icons-material/ShuffleOutlined';
 import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
 import Paper from '@mui/material/Paper';
 import MapsUgcOutlinedIcon from '@mui/icons-material/MapsUgcOutlined';
 
@@ -15,10 +17,27 @@ import './styles/Home.css';
 export const Home: React.FC = () => {
     const navigate = useNavigate();
     const currentUser = useAppSelector(selectLoggedInUser);
+    const [open, setOpen] = useState(false);
     const [ editingQuote, setEditingQuote ] = useState<boolean>(false);
+
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
+    // const style = {
+    //     position: 'absolute' as 'absolute',
+    //     top: '50%',
+    //     left: '50%',
+    //     transform: 'translate(-50%, -50%)',
+    //     width: 400,
+    //     bgcolor: 'background.paper',
+    //     border: '2px solid #000',
+    //     borderRadius: '5px',
+    //     boxShadow: 24,
+    //     p: 4,
+    //   };
     
     const quotes = [
-        {author: "Hugo Chavez", content: "I'm some quote thats a bit long djdhaskdhkjd"},
+        {author: "Hugo Chavez", content: "I'm some quote thats a bit long djdhaskdhkjd", source: "Theo Von Podcast"},
         {author: "jp", content: "I'm some quote thats a bit long"},
         {author: "jp", content: "I'm some quote thats a bit long djdhaskdhkjd but this one is so much longer that its about three lines or so in real life or even elike a whole paragraph"},
         {author: "jp", content: "I'm some quote thats a bit long djdhaskdhkjd I'm some quote thats a bit long djdhaskdhkjd I'm some quote thats a bit long djdhaskdhkjd"},
@@ -60,11 +79,30 @@ export const Home: React.FC = () => {
                     enterNextDelay={500}
                     >
                     <Button variant="text" color="info">
-                        <MapsUgcOutlinedIcon htmlColor="#383939" fontSize="large"/>
+                        <MapsUgcOutlinedIcon htmlColor="#383939" fontSize="large" onClick={handleOpen}/>
                     </Button>
                 </Tooltip>
             </div>
             { editingQuote && <Paper>I'm going to be some edit popup</Paper> }
+            <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <AddQuoteForm/>
+            </Modal>
+                
         </div>
     )
 };
+
+// .quote {
+//     padding: 10px 30px;
+//     margin-bottom: 15px;
+//     font-family: 'EB Garamond', serif;
+//   }
+
+//   <Box sx={style}>
+//      Some content just to check
+//   </Box>
