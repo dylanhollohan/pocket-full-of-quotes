@@ -10,7 +10,7 @@ import MapsUgcOutlinedIcon from '@mui/icons-material/MapsUgcOutlined';
 
 import { useAppSelector } from '../state/hooks';
 import { selectLoggedInUser } from '../modules/users/state/selectors';
-import { Quote } from '../components';
+import { Quote, AddQuoteForm } from '../components';
 
 import './styles/Home.css';
 
@@ -22,19 +22,8 @@ export const Home: React.FC = () => {
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    
 
-    // const style = {
-    //     position: 'absolute' as 'absolute',
-    //     top: '50%',
-    //     left: '50%',
-    //     transform: 'translate(-50%, -50%)',
-    //     width: 400,
-    //     bgcolor: 'background.paper',
-    //     border: '2px solid #000',
-    //     borderRadius: '5px',
-    //     boxShadow: 24,
-    //     p: 4,
-    //   };
     
     const quotes = [
         {author: "Hugo Chavez", content: "I'm some quote thats a bit long djdhaskdhkjd", source: "Theo Von Podcast"},
@@ -85,14 +74,12 @@ export const Home: React.FC = () => {
             </div>
             { editingQuote && <Paper>I'm going to be some edit popup</Paper> }
             <Modal
+                className="add-quote-modal"
                 open={open}
                 onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
             >
-                <AddQuoteForm/>
+                <AddQuoteForm closeModal={handleClose}/>
             </Modal>
-                
         </div>
     )
 };

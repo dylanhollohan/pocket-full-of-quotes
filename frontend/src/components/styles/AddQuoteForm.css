@@ -1,0 +1,42 @@
+.add-quote-header {
+  margin-bottom: 10px;
+}
+
+.add-quote-button-wrapper {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+.add-quote-modal {
+  position: relative;
+  width: 400;
+}
+
+.add-quote-paper {
+  display: flex;
+  flex-direction: column;
+
+  position: 'absolute';
+  top: '50%';
+  left: '50%';
+  transform: 'translate(-50%, -50%)';
+  
+  border: '2px solid #000';
+  border-radius: '5px';
+  /* boxShadow: 24; */
+  padding: 4px;
+}
+
+.add-quote__input-wrapper {
+  width: 400px;
+  align-self: center;
+}
+
+/* .quote {
+  //     padding: 10px 30px;
+  //     margin-bottom: 15px;
+  //     font-family: 'EB Garamond', serif;
+  //   } */
+  
