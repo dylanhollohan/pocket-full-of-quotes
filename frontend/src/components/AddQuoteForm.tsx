@@ -44,29 +44,42 @@ const AddQuoteForm: React.FC<AddQuoteFormProps> = ({ closeModal }) => {
     // }));
   }
 
+  const style = {
+    position: 'absolute', // as 'absolute'
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: '600px',
+    borderRadius: '5px',
+    // boxShadow: 24,
+    p: 4,
+  };
+
 
   return (
-    <Paper className="add-quote-paper">
-      <h1 className="add-quote-header">Add a Quote</h1>
-      <FormControl className="add-quote__input-wrapper">
-        <InputLabel htmlFor="author-input">Email address</InputLabel>
-        <Input id="author-input" type="text" required onChange={handleAuthorChange}/>
-      </FormControl>
-      <div className="v-space"/>
-      <FormControl className="add-quote__input-wrapper">
-        <InputLabel htmlFor="content-input">Password</InputLabel>
-        <Input id="content-input" required onChange={handleContentChange} type="text"/>
-      </FormControl>
-      <FormControl className="add-quote__input-wrapper">
-        <InputLabel htmlFor="password-input">Password</InputLabel>
-        <Input id="source-input" onChange={handleSourceChange} type="text" placeholder="Where did you hear/read the quote?"/>
-      </FormControl>
-      <div className="v-space"/>
-      <Box className="add-quote-button-wrapper">
-        <Button variant="contained" onClick={handleSubmit}>Submit Quote</Button>
-        <Button variant="contained" onClick={closeModal}>Cancel</Button>
-      </Box>
-    </Paper>
+    <Box sx={style}>
+      <Paper className="add-quote-paper">
+        <h1 className="add-quote-header">Add a Quote</h1>
+        <FormControl className="add-quote__input-wrapper">
+          <InputLabel htmlFor="author-input">Author</InputLabel>
+          <Input id="author-input" type="text" required onChange={handleAuthorChange}/>
+        </FormControl>
+        <div className="v-space"/>
+        <FormControl className="add-quote__input-wrapper">
+          <InputLabel htmlFor="content-input">Content</InputLabel>
+          <Input id="content-input"  multiline rows={4} required onChange={handleContentChange} type="text"/>
+        </FormControl>
+        <FormControl className="add-quote__input-wrapper">
+          <InputLabel htmlFor="password-input">Source</InputLabel>
+          <Input id="source-input" onChange={handleSourceChange} type="text" placeholder="Where did you hear/read the quote?"/>
+        </FormControl>
+        <div className="v-space"/>
+        <Box className="add-quote-button-wrapper">
+          <Button variant="contained" onClick={handleSubmit}>Submit Quote</Button>
+          <Button variant="contained" onClick={closeModal}>Cancel</Button>
+        </Box>
+      </Paper>
+    </Box>
   );
 }
 
