@@ -1,3 +1,11 @@
 import { quoteSlice } from './reducers';
 
-export const { setSelectedQuote } = quoteSlice.actions
+export const { 
+  setSelectedQuote,
+  addQuoteRequest,
+  addQuoteSuccess,
+  addQuoteFail,
+  getQuotesRequest,
+  getQuotesSuccess,
+  getQuotesFail
+ } = quoteSlice.actions
