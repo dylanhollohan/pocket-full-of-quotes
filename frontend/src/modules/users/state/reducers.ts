@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { SignupError, LoginError, SignupSuccessPayload, LoginSuccessPayload } from '../types';
-import { RequestStatus } from '../constants';
+import { RequestStatus } from '../../constants';
 
 export interface UserState {
   loggedInUser: String | null;

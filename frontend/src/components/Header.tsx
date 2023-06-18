@@ -9,7 +9,7 @@ import { useAppDispatch, useAppSelector } from '../state/hooks';
 import { logoutRequest } from '../modules/users/state';
 import { resetLogout } from '../modules/users/state/actions';
 import { selectLoggedInUser, selectLogoutRequestStatus } from '../modules/users/state/selectors';
-import { RequestStatus } from '../modules/users/constants';
+import { RequestStatus } from '../modules/constants';
 
 const Header: React.FC = () => {
   const dispatch = useAppDispatch();

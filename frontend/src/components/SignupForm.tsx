@@ -13,7 +13,7 @@ import { useAppDispatch, useAppSelector } from '../state/hooks';
 import { signupRequest } from '../modules/users/state';
 import { resetSignup } from '../modules/users/state/actions';
 import { selectSignupRequestStatus } from '../modules/users/state/selectors';
-import { RequestStatus } from '../modules/users/constants';
+import { RequestStatus } from '../modules/constants';
 
 const SignupForm: React.FC = () => {
   const dispatch = useAppDispatch();
