@@ -27,7 +27,7 @@ export const quoteSlice = createSlice({
     addQuoteRequest: state => {
       state.addQuoteRequestStatus = RequestStatus.PENDING;
     },
-    addQuoteSuccess: (state, action: PayloadAction<AddQuoteSuccessPayload>) => {
+    addQuoteSuccess: state => {
       state.addQuoteRequestStatus = RequestStatus.SUCCESS;
     },
     addQuoteFail: state => {
