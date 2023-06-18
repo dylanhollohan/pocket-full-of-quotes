@@ -4,8 +4,9 @@
 2. add JWT to included technologies list
 3. create custom theme for grey colors
 4. create API layer that abstracts axios calls into a client
-5. Finish the Quotes state, particularly the possible actions such as getQuotesRequest, getQuotesSuccess
-6. clean up passwords to use visibility toggle iconbutton from materialUI
+5. option to display no dates, created date, or last edited date
+6. Finish the Quotes state, particularly the possible actions such as getQuotesRequest, getQuotesSuccess
+7. clean up passwords to use visibility toggle iconbutton from materialUI
 
 # Regarding CORS, Cookies, Axios, JWT and other:
 

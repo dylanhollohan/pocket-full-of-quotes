@@ -19,6 +19,7 @@ const Quote: React.FC<QuoteProps> = ({
       <div className="content">{quote.content}</div>
       <div className="author">- {quote.author}</div>
       { quote.source && <div className="source">via {quote.source}</div> }
+      {/* a space to optionally include a parsed date  */}
     </Paper>
   );
 }
