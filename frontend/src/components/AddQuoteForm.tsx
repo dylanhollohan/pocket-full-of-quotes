@@ -10,7 +10,7 @@ import TextField from '@mui/material/TextField';
 
 import { useAppDispatch, useAppSelector } from '../state/hooks';
 import { selectLoggedInUser } from '../modules/users/state/selectors';
-import { loginRequest } from '../modules/users/state';
+import { addQuoteRequest } from '../modules/quotes/state';
 import './styles/AddQuoteForm.css';
 
 type AddQuoteFormProps = {
@@ -20,9 +20,9 @@ type AddQuoteFormProps = {
 const AddQuoteForm: React.FC<AddQuoteFormProps> = ({ closeModal }) => {
   const dispatch = useAppDispatch();
   const currentUser = useAppSelector(selectLoggedInUser);
-  const [author, setAuthor] = useState<String>("");
-  const [content, setContent] = useState<String>("");
-  const [source, setSource] = useState<String>("");
+  const [author, setAuthor] = useState<string>("");
+  const [content, setContent] = useState<string>("");
+  const [source, setSource] = useState<string>("");
 
   const handleAuthorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAuthor(e.target.value);
@@ -37,12 +37,11 @@ const AddQuoteForm: React.FC<AddQuoteFormProps> = ({ closeModal }) => {
   } 
 
   const handleSubmit = () => {
-    console.log('submitted!')
-    // dispatch(addQuoteRequest({
-    //   author,
-    //   content,
-    //   source
-    // }));
+    dispatch(addQuoteRequest({
+      author: author === "" ? undefined: author,
+      content,
+      source: source === "" ? undefined : source
+    }));
   }
 
   const style = {
