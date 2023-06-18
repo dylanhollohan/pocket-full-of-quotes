@@ -44,11 +44,11 @@ const getQuote = async (req: Request, res: Response): Promise<any> => {
 };
 
 const addQuote = async (req: Request, res: Response): Promise<void> => {
-    const { author, body, source }: AddQuoteRequestPayload = req.body;
+    const { author, content, source }: AddQuoteRequestPayload = req.body;
     try { 
         const quote = await Quote.create({ 
         author,
-        body,
+        content,
         source
         });
         res.status(200).json(quote);

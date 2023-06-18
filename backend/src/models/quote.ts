@@ -8,7 +8,7 @@ const quoteSchema = new Schema(
       type: String,
       default: "unknown",
     },
-    body: {
+    content: {
       type: String,
       required: true,
     },

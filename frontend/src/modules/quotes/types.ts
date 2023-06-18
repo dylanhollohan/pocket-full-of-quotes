@@ -1,10 +1,11 @@
 export type AddQuoteSuccessPayload = AddQuoteRequestPayload & {
+  author: string;
   id: string;
   timestamp: any;
 }
 
 export type AddQuoteRequestPayload = {
-  author: string,
+  author?: string,
   content: string,
   source?: string
 }
