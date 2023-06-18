@@ -1,6 +1,6 @@
 # Front-end To-do (in order of priority):
 
-1. create submission state for quotes
+1. need a filler/ tutorial for when no quotes exist yet. Looks like shit.
 2. add JWT to included technologies list
 3. create custom theme for grey colors
 4. create API layer that abstracts axios calls into a client
