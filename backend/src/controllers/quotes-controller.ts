@@ -49,7 +49,7 @@ const addQuote = async (req: Request, res: Response): Promise<void> => {
         const quote = await Quote.create({ 
         author,
         content,
-        source
+        source: source === "" ? undefined : source
         });
         res.status(200).json(quote);
     } catch (e: any) {
