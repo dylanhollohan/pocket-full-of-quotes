@@ -5,7 +5,6 @@ import { MongoServerError } from 'mongodb';
 import jwt from 'jsonwebtoken';
 import { config } from 'dotenv';
 config();
-// import { } from './auth-types';
 
 const handleErrors = (err: any) => {
   let errors = { email: '', password: '' }
