@@ -5,9 +5,9 @@ export type AddQuoteSuccessPayload = AddQuoteRequestPayload & {
 }
 
 export type AddQuoteRequestPayload = {
-  author?: string,
+  author: string,
   content: string,
-  source?: string
+  source: string
 }
 
 export type getQuotesSuccessPayload = {

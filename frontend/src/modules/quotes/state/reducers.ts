@@ -9,7 +9,6 @@ export interface QuoteState {
   quotes: AddQuoteSuccessPayload[];
 }
 
-// Define the initial state using that type
 const initialState: QuoteState = {
   selectedQuote: null,
   addQuoteRequestStatus: RequestStatus.IDLE,
