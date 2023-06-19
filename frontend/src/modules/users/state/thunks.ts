@@ -11,7 +11,6 @@ export function signupRequest(payload: SignupRequestPayload) {
   // signupRequestThunk is the "thunk function"
   return async function signupRequestThunk(dispatch) {
     try {
-      // Note that Axios automatically serializes payload as JSON (stringify)
       const response: AxiosResponse<SignupSuccessPayload>  = await axiosInstance({
         method: 'post',
         url: '/signup',
@@ -26,7 +25,6 @@ export function signupRequest(payload: SignupRequestPayload) {
       } else {
         // @ts-ignore
         dispatch(signupFail(response.errors))
-        // use reducers to set error messages in global, and then clear them when a new signup request is made, or otherwise navigation is used.
       }
     } catch (error) {
       dispatch(signupFail({ message: "theres an error"}))
@@ -40,6 +38,7 @@ export function loginRequest(payload: LoginRequestPayload) {
       const response: AxiosResponse<LoginSuccessPayload> = await axiosInstance({
         method: 'post',
         url: '/login',
+        withCredentials: true,
         data: payload
       });
       console.log('login response: ', response);
