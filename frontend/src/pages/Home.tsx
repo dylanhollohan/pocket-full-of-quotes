@@ -22,7 +22,7 @@ export const Home: React.FC = () => {
     const dispatch = useAppDispatch();
     const currentUser = useAppSelector(selectLoggedInUser);
     const addQuoteRequestStatus = useAppSelector(selectAddQuoteRequestStatus);
-    // const getQuoteRequestStatus = useAppSelector(selectAddQuoteRequestStatus);
+    const getQuotesRequestStatus = useAppSelector(selectAddQuoteRequestStatus);
     const quotes = useAppSelector(selectQuotes);
     const [open, setOpen] = useState(false);
     const [ editingQuote, setEditingQuote ] = useState<boolean>(false);
@@ -37,7 +37,9 @@ export const Home: React.FC = () => {
     }, [currentUser, navigate]);
 
     useEffect(() => {
-        // dispatch(getQuotesRequest);
+        if (currentUser) {
+            dispatch(getQuotesRequest({ userId: currentUser }));
+        }
     });
 
     useEffect(() => {
