@@ -1,28 +1,28 @@
 export type User = {
-  username: String;
-  email: String;
-  id: String;
+  username: string;
+  email: string;
+  id: string;
 }
 
 export type SignupRequestPayload = LoginRequestPayload & {
-  username: String;
-  email: String;
-  password: String;
+  username: string;
+  email: string;
+  password: string;
 }
 
 export type LoginRequestPayload = {
-  email: String;
-  password: String;
+  email: string;
+  password: string;
 }
 
 export type SignupSuccessPayload = {
-  userId: String
+  userId: string
 }
 
 export type LoginSuccessPayload = SignupSuccessPayload;
 
 export type SignupError = {
-  message: String;
+  message: string;
 }
 
 export type LoginError = SignupError;

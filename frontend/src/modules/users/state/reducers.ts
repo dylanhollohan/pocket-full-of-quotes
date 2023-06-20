@@ -3,7 +3,7 @@ import type { SignupError, LoginError, SignupSuccessPayload, LoginSuccessPayload
 import { RequestStatus } from '../../constants';
 
 export interface UserState {
-  loggedInUser: String | null;
+  loggedInUser: string | null;
   loginRequestStatus: RequestStatus;
   logoutRequestStatus: RequestStatus;
   signupRequestStatus: RequestStatus;
