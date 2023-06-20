@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { AddQuoteRequestPayload, AddQuoteSuccessPayload } from '../types';
+import { AddQuoteRequestPayload, AddQuoteSuccessPayload, GetQuotesRequestPayload, GetQuotesSuccessPayload } from '../types';
 import { addQuoteFail, addQuoteSuccess } from './actions';
 
 const axiosInstance = axios.create({
@@ -29,6 +29,32 @@ export function addQuoteRequest(payload: AddQuoteRequestPayload) {
     } catch (error) {
       // @ts-ignore
       dispatch(addQuoteFail({ message: "theres an error"}))
+    }
+  }
+}
+
+export function getQuotesRequest(payload: GetQuotesRequestPayload) {
+  return async function getQuotesRequestThunk(dispatch) {
+    try {
+      const response: AxiosResponse<GetQuotesSuccessPayload>  = await axiosInstance({
+        method: 'get',
+        url: '/shuffle',
+        withCredentials: true,
+        data: payload
+      });
+      console.log('get quotes response: ', response);
+      // @ts-ignore
+      if (response.data) {
+        // @ts-ignore
+        dispatch(getQuotesSuccess(response.data));
+      } else {
+        // @ts-ignore
+        dispatch(getQuotesFail(response.errors))
+        // use reducers to set error messages in global, and then clear them when a new signup request is made, or otherwise navigation is used.
+      }
+    } catch (error) {
+      // @ts-ignore
+      dispatch(getQuotesFail({ message: "theres an error getting quotes"}))
     }
   }
 }
