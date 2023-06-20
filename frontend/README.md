@@ -5,7 +5,6 @@
 1. create custom theme for grey colors
 1. create API layer that abstracts axios calls into a client
 1. option to display no dates, created date, or last edited date
-1. Finish the Quotes state, particularly the possible actions such as getQuotesRequest, getQuotesSuccess
 1. clean up passwords to use visibility toggle iconbutton from materialUI
 
 # Regarding CORS, Cookies, Axios, JWT and other:

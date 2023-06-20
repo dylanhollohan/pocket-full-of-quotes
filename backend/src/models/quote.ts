@@ -4,6 +4,10 @@ const { Schema } = mongoose;
 
 const quoteSchema = new Schema(
   {
+    userId: {
+      type: String,
+      required: true,
+    },
     author: {
       type: String,
       default: "unknown",

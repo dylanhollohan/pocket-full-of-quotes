@@ -1,7 +1,7 @@
 TO-DO:  
 Priority V
 
-- sign up and login frontend forms
+-
 - configure ESLint
 - Figure out Mongoose Errors in typescript
 
