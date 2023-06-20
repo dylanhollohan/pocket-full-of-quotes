@@ -10,6 +10,10 @@ export type AddQuoteRequestPayload = {
   source: string
 }
 
-export type getQuotesSuccessPayload = {
+export type GetQuotesRequestPayload = {
+  userId: string
+}
+
+export type GetQuotesSuccessPayload = {
   quotes: AddQuoteSuccessPayload[];
 }
