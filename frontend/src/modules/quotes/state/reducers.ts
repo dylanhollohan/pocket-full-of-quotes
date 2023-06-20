@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { AddQuoteSuccessPayload, getQuotesSuccessPayload } from '../types';
+import type { AddQuoteSuccessPayload, GetQuotesRequestPayload, GetQuotesSuccessPayload } from '../types';
 import { RequestStatus } from '../../constants';
 
 export interface QuoteState {
@@ -32,10 +32,10 @@ export const quoteSlice = createSlice({
     addQuoteFail: state => {
       state.addQuoteRequestStatus = RequestStatus.FAILURE;
     },
-    getQuotesRequest: state => {
+    getQuotesRequest: (state, action: PayloadAction<GetQuotesRequestPayload>)  => {
       state.getQuotesRequestStatus = RequestStatus.PENDING;
     },
-    getQuotesSuccess: (state, action: PayloadAction<getQuotesSuccessPayload>) => {
+    getQuotesSuccess: (state, action: PayloadAction<GetQuotesSuccessPayload>) => {
       state.getQuotesRequestStatus = RequestStatus.SUCCESS;
       state.quotes = action.payload.quotes;
     },
