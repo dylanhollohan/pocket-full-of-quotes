@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { Quote } from '../models';
-import { AddQuoteRequestPayload, GetQuotePayload } from './quote-types';
+import { AddQuoteRequestPayload, GetQuotePayload, GetQuoteRequestPayload } from './quote-types';
 import mongoose from 'mongoose';
 
 // TODO: better error handling
@@ -14,17 +14,20 @@ const getQuotes = async (req: Request, res: Response) => {
 }
 
 // TODO: better error handling
-const getRandomQuotes = async (req: Request, res: Response) => {
+const getRandomQuotes = async (req: Request<GetQuoteRequestPayload>, res: Response) => {
+    const { userId } = req.body;
     try {
         const quotes = await Quote.aggregate([
             {
-              '$sample': {
-                'size': 5
-              }
-            }
+              $match: { userId: userId },
+            },
+            {
+              $sample: { size: 5 },
+            },
           ]);
-        res.status(200).json(quotes);
+        res.status(200).json({ quotes });
     } catch (e: any) {
+        console.log("error in handler: ", e);
         res.json({ error: e });
     }
 };
@@ -44,10 +47,11 @@ const getQuote = async (req: Request, res: Response): Promise<any> => {
 };
 
 const addQuote = async (req: Request, res: Response): Promise<void> => {
-    const { author, content, source }: AddQuoteRequestPayload = req.body;
+    const { author, content, source, userId }: AddQuoteRequestPayload = req.body;
     try { 
         const quote = await Quote.create({ 
-        author,
+        userId,
+        author: author === "" ? undefined: author,
         content,
         source: source === "" ? undefined : source
         });
