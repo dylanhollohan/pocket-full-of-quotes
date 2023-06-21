@@ -1,5 +1,6 @@
 # Front-end To-do (in order of priority):
 
+1. quote delete button
 1. need a filler/ tutorial for when no quotes exist yet. Looks like shit.
 1. add JWT to included technologies list
 1. create custom theme for grey colors
