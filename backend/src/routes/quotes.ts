@@ -5,7 +5,7 @@ import { requireAuth } from '../middleware';
 export const quotesRouter = express.Router();
 
 quotesRouter.get('/', requireAuth, controller.getQuotes);
-quotesRouter.get('/shuffle', requireAuth, controller.getRandomQuotes);
+quotesRouter.post('/shuffle', requireAuth, controller.getRandomQuotes);
 quotesRouter.get('/:id', requireAuth, controller.getQuote);
 quotesRouter.post('/', requireAuth, controller.addQuote);
 quotesRouter.delete('/:id', requireAuth, controller.deleteQuote);
