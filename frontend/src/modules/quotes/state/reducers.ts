@@ -6,11 +6,13 @@ export interface QuoteState {
   selectedQuote: AddQuoteSuccessPayload | null;
   addQuoteRequestStatus: RequestStatus;
   getQuotesRequestStatus: RequestStatus;
+  addedQuote: AddQuoteSuccessPayload | null;
   quotes: AddQuoteSuccessPayload[];
 }
 
 const initialState: QuoteState = {
   selectedQuote: null,
+  addedQuote: null,
   addQuoteRequestStatus: RequestStatus.IDLE,
   getQuotesRequestStatus: RequestStatus.IDLE,
   quotes: [],
@@ -26,8 +28,9 @@ export const quoteSlice = createSlice({
     addQuoteRequest: state => {
       state.addQuoteRequestStatus = RequestStatus.PENDING;
     },
-    addQuoteSuccess: state => {
+    addQuoteSuccess: (state, action: PayloadAction<AddQuoteSuccessPayload>) => {
       state.addQuoteRequestStatus = RequestStatus.SUCCESS;
+      state.addedQuote = action.payload;
     },
     addQuoteFail: state => {
       state.addQuoteRequestStatus = RequestStatus.FAILURE;
