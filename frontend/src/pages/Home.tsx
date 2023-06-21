@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import Tooltip from '@mui/material/Tooltip';
 import ShuffleOutlinedIcon from '@mui/icons-material/ShuffleOutlined';
 import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Paper from '@mui/material/Paper';
 import MapsUgcOutlinedIcon from '@mui/icons-material/MapsUgcOutlined';
@@ -14,7 +13,7 @@ import { selectAddQuoteRequestStatus, selectQuotes } from '../modules/quotes/sta
 import { Quote, AddQuoteForm } from '../components';
 
 import './styles/Home.css';
-import { getQuotesRequest } from '../modules/quotes/state/actions';
+import { getQuotesRequest } from '../modules/quotes/state';
 import { RequestStatus } from '../modules/constants';
 
 export const Home: React.FC = () => {
@@ -29,6 +28,11 @@ export const Home: React.FC = () => {
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const handleShuffle = () => {
+        if (currentUser) {
+            dispatch(getQuotesRequest({ userId: currentUser }));
+        }
+    }
 
     useEffect(() => {
         if (!currentUser) {
@@ -40,7 +44,7 @@ export const Home: React.FC = () => {
         if (currentUser) {
             dispatch(getQuotesRequest({ userId: currentUser }));
         }
-    });
+    }, [currentUser, dispatch]);
 
     useEffect(() => {
         if (addQuoteRequestStatus === RequestStatus.SUCCESS || addQuoteRequestStatus === RequestStatus.FAILURE) {
@@ -53,7 +57,7 @@ export const Home: React.FC = () => {
             <div className="quotes-container">
                 {quotes.map((quote, index) => {
                     return (
-                        <Quote quote={quote} key={`${quote.author}-${index}`}></Quote>  
+                        <Quote quote={quote} key={`${quote.author}-${index}`}/>
                     )
                 })}
             </div>
@@ -65,7 +69,7 @@ export const Home: React.FC = () => {
                     enterDelay={500}
                     enterNextDelay={500}
                     >
-                    <Button variant="text" color="info">
+                    <Button variant="text" color="info" onClick={handleShuffle}>
                         <ShuffleOutlinedIcon htmlColor="#383939" fontSize="large"/>
                     </Button>
                 </Tooltip>
