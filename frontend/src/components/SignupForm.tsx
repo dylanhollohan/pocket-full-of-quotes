@@ -56,7 +56,6 @@ const SignupForm: React.FC = () => {
 
   // grab global state of the signup request, and determine where to conditionally render some error messages if the state is FAILED (could include error message in red
   // inside the v-space sections)
-  // if sign up success, redirect to the login page
 
   return (
     <Paper className="signup-paper">
