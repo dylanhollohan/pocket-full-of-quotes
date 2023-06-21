@@ -1,6 +1,7 @@
 .quote {
   padding: 10px 30px;
   margin-bottom: 15px;
+  min-width: 300px;
   font-family: 'EB Garamond', serif;
 }
 
