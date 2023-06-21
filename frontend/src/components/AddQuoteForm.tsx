@@ -37,11 +37,12 @@ const AddQuoteForm: React.FC<AddQuoteFormProps> = ({ closeModal }) => {
   } 
 
   const handleSubmit = () => {
-    if (content !== "") {
+    if (content !== "" && currentUser) {
       dispatch(addQuoteRequest({
         author,
         content,
-        source
+        source, 
+        userId: currentUser
       }));
     }
   }
