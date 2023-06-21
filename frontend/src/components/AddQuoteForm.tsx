@@ -45,6 +45,7 @@ const AddQuoteForm: React.FC<AddQuoteFormProps> = ({ closeModal }) => {
         userId: currentUser
       }));
     }
+    closeModal();
   }
 
   const style = {
