@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { AddQuoteRequestPayload, AddQuoteSuccessPayload, GetQuotesRequestPayload, GetQuotesSuccessPayload } from '../types';
-import { addQuoteFail, addQuoteSuccess } from './actions';
+import { addQuoteFail, addQuoteSuccess, getQuotesSuccess, getQuotesFail } from './actions';
 
 const axiosInstance = axios.create({
   baseURL: 'http://localhost:4000/api/quotes'
@@ -16,7 +16,6 @@ export function addQuoteRequest(payload: AddQuoteRequestPayload) {
         withCredentials: true,
         data: payload
       });
-      console.log('add quote response: ', response);
       // @ts-ignore
       if (response.data) {
         // @ts-ignore
@@ -37,7 +36,7 @@ export function getQuotesRequest(payload: GetQuotesRequestPayload) {
   return async function getQuotesRequestThunk(dispatch) {
     try {
       const response: AxiosResponse<GetQuotesSuccessPayload>  = await axiosInstance({
-        method: 'get',
+        method: 'post',
         url: '/shuffle',
         withCredentials: true,
         data: payload
