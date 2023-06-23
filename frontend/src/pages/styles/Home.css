@@ -10,10 +10,15 @@
 
 .quotes-buttons {
   font-size: 80px;
+  padding: 50px 0 50px 50px;
+}
+
+.quotes-button-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 50px 0 50px 50px;
+  border-radius: 8px;
+  box-shadow: 0 2px 2px #8a8ab4;
+  border: 1px solid rgb(240, 240, 240);
 }
 
 .quotes-tooltip {

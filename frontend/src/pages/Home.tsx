@@ -18,13 +18,26 @@ import './styles/Home.css';
 import { getQuotesRequest } from '../modules/quotes/state';
 import { RequestStatus } from '../modules/constants';
 
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+    props,
+    ref,
+  ) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
+enum Severity {
+    ERROR = "error",
+    WARNING = "warning",
+    INFO = "info",
+    SUCCESS = "success"
+
+}
+
 type Toast = {
     display: boolean,
     text: string | null,
-    severity:  "error" | "warning" | "info" | "success",
+    severity:  Severity,
 }  
-// TO DO:  make an enum here
-// TO DO: figure out the auto-hide for the toast
 
 export const Home: React.FC = () => {
     const navigate = useNavigate();
@@ -34,22 +47,21 @@ export const Home: React.FC = () => {
     const getQuotesRequestStatus = useAppSelector(selectAddQuoteRequestStatus);
     const addedQuote = useAppSelector(selectAddedQuote);
     const quotes = useAppSelector(selectQuotes);
-    const [open, setOpen] = useState(false);
+    const [modalOpen, setModalOpen] = useState(false);
     const [toast, setToast] = useState<Toast>({
         display: false,
         text: null,
-        severity: "success",
+        severity: Severity.SUCCESS,
     });
     
     const [ editingQuote, setEditingQuote ] = useState<boolean>(false);
 
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-    const handleShuffle = () => {
-        if (currentUser) {
+    const handleModalOpen = () => setModalOpen(true);
+    const handleModalClose = () => setModalOpen(false);
+    const handleShuffle = () => { 
+        if (currentUser) { 
             dispatch(getQuotesRequest({ userId: currentUser }));
-        }
-    }
+    }};
 
     useEffect(() => {
         if (!currentUser) {
@@ -65,76 +77,76 @@ export const Home: React.FC = () => {
 
     useEffect(() => {
         if (addQuoteRequestStatus === RequestStatus.SUCCESS && addedQuote) {
-            setOpen(false);
+            setModalOpen(false);
             setToast({
                 display: true,
-                text: `Quote "${addedQuote.content.slice(0, 8)}..." added!`, // consider an index out of bounds fix
-                severity: "success"
-
+                text: `Quote "${addedQuote.content.slice(0, Math.min(15, addedQuote.content.length))}..." added!`,
+                severity: Severity.SUCCESS
             })
-        } else if ( addQuoteRequestStatus === RequestStatus.FAILURE) {
-            setOpen(false);
+        } else if (addQuoteRequestStatus === RequestStatus.FAILURE) {
+            setModalOpen(false);
             setToast({
                 display: true,
                 text: "Failed to add quote.",
-                severity: "error"
+                severity: Severity.ERROR
             })
         } 
-    }, [addQuoteRequestStatus])
+    }, [addQuoteRequestStatus, addedQuote])
 
-    const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
-        props,
-        ref,
-      ) {
-        return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-    });
+    const handleCloseToast = () => {
+        setToast({
+            ...toast,
+            display: false,
+        });
+    }
 
     return (
         <div className="quotes-flex">
             <div className="quotes-container">
                 {quotes.map((quote, index) => {
                     return (
-                        <Quote quote={quote} key={`${quote.author}-${index}`}/>
+                        <Quote quote={quote} key={`${quote.id}-${index}`}/>
                     )
                 })}
             </div>
             <div className="quotes-buttons">
-                <Tooltip 
-                    title={<h3 className="quotes-tooltip">Shuffle Quotes</h3>}
-                    arrow
-                    placement="right"
-                    enterDelay={500}
-                    enterNextDelay={500}
-                    >
-                    <Button variant="text" color="info" onClick={handleShuffle}>
-                        <ShuffleOutlinedIcon htmlColor="#383939" fontSize="large"/>
-                    </Button>
-                </Tooltip>
-                <Tooltip 
-                    title={<h3 className="quotes-tooltip">Add Quote</h3>}
-                    arrow
-                    placement="right"
-                    enterDelay={500}
-                    enterNextDelay={500}
-                    >
-                    <Button variant="text" color="info">
-                        <MapsUgcOutlinedIcon htmlColor="#383939" fontSize="large" onClick={handleOpen}/>
-                    </Button>
-                </Tooltip>
+                <div className="quotes-button-wrapper">
+                    <Tooltip 
+                        title={<h3 className="quotes-tooltip">Shuffle Quotes</h3>}
+                        arrow
+                        placement="right"
+                        enterDelay={500}
+                        enterNextDelay={500}
+                        >
+                        <Button variant="text" color="info" onClick={handleShuffle}>
+                            <ShuffleOutlinedIcon htmlColor="#383939" fontSize="large"/>
+                        </Button>
+                    </Tooltip>
+                    <Tooltip 
+                        title={<h3 className="quotes-tooltip">Add Quote</h3>}
+                        arrow
+                        placement="right"
+                        enterDelay={500}
+                        enterNextDelay={500}
+                        >
+                        <Button variant="text" color="info">
+                            <MapsUgcOutlinedIcon htmlColor="#383939" fontSize="large" onClick={handleModalOpen}/>
+                        </Button>
+                    </Tooltip>
+                </div>
             </div>
             { editingQuote && <Paper>I'm going to be some edit popup</Paper> }
-            { /* add onclose if necessary */}
-            <Snackbar open={toast.display} autoHideDuration={6000}> 
-                <Alert  severity={toast.severity} sx={{ width: '100%' }}> {/*add onClose if needed */}
+            <Snackbar open={toast.display} autoHideDuration={6000} onClose={handleCloseToast}> 
+                <Alert  onClose={handleCloseToast} severity={toast.severity} sx={{ width: '100%' }}>
                     { toast.text }
                 </Alert>
             </Snackbar>
             <Modal
                 className="add-quote-modal"
-                open={open}
-                onClose={handleClose}
+                open={modalOpen}
+                onClose={handleModalClose}
             >
-                <AddQuoteForm closeModal={handleClose}/>
+                <AddQuoteForm closeModal={handleModalClose}/>
             </Modal>
         </div>
     )
