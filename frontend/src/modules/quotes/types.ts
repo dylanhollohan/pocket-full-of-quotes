@@ -1,5 +1,4 @@
 export type AddQuoteSuccessPayload = AddQuoteRequestPayload & {
-  author: string;
   id: string;
   timestamp: any;
 }
