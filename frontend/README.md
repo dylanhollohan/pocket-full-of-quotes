@@ -1,9 +1,11 @@
 # Front-end To-do (in order of priority):
 
-1. quote delete button
-1. need a filler/ tutorial for when no quotes exist yet. Looks like shit.
+1. quote delete button (greyed out if none are selected)
+1. multi-delete backend call for when selectedQuote.length > 1
+1. need a tutorial state for when they have never added a quote.
+1. add 3 sample quotes once they successfully signup/login for the first time (store login count on the user?)
 1. add JWT to included technologies list
-1. create custom theme for grey colors
+1. create custom theme MUI for grey colors
 1. create API layer that abstracts axios calls into a client
 1. option to display no dates, created date, or last edited date
 1. clean up passwords to use visibility toggle iconbutton from materialUI
