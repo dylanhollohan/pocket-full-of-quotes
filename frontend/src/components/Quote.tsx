@@ -21,11 +21,10 @@ const Quote: React.FC<QuoteProps> = ({
   return (
     <Paper className="quote" >
       <div className={`content ${selected ? "selected-content" : ""}`}>{quote.content}</div>
-      <div className="author">- {quote.author}</div>
-      { quote.source && <div className="source">via {quote.source}</div> }
+      <div className={`author ${selected ? "selected-content" : "" }`} >- {quote.author}</div>
+      { quote.source && <div className={`source ${selected ? "selected-content" : "" }`}>via {quote.source}</div> }
       {/* a space to optionally include a parsed date  */}
     </Paper>
-    
   );
 }
 
