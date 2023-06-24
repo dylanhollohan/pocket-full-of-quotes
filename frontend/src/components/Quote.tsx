@@ -5,22 +5,27 @@ type QuoteDetails = {
   content: string;
   author: string;
   source?: string;
+  _id: string;
+  userId: string;
 };
 
 type QuoteProps = {
-  quote: QuoteDetails
+  quote: QuoteDetails,
+  selected: boolean
 }
 
 const Quote: React.FC<QuoteProps> = ({
-  quote
+  quote,
+  selected
 }) => {
   return (
-    <Paper className="quote">
-      <div className="content">{quote.content}</div>
+    <Paper className="quote" >
+      <div className={`content ${selected ? "selected-content" : ""}`}>{quote.content}</div>
       <div className="author">- {quote.author}</div>
       { quote.source && <div className="source">via {quote.source}</div> }
       {/* a space to optionally include a parsed date  */}
     </Paper>
+    
   );
 }
 

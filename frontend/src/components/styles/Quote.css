@@ -1,13 +1,18 @@
 .quote {
-  padding: 10px 30px;
-  margin-bottom: 15px;
-  min-width: 300px;
   font-family: 'EB Garamond', serif;
+  padding: 10px 30px;
 }
 
 .content {
   font-size: 22px;
+  text-align: left;
+  transition: font-size .3s ease-in-out;
 }
+
+.content.selected-content {
+  font-size:  calc(0.88*22px);
+}
+
 
 .author {
   font-size: 18px;

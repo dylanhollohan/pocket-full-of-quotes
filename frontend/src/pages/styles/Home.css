@@ -5,7 +5,9 @@
 }
 
 .quotes-container {
+  min-width: 300px;
   max-width: 400px;
+  text-align: center;
 }
 
 .quotes-buttons {
@@ -19,6 +21,20 @@
   border-radius: 8px;
   box-shadow: 0 2px 2px #8a8ab4;
   border: 1px solid rgb(240, 240, 240);
+}
+
+.clickable-quote {
+  border-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+  height: min-content;
+  background: #f7f7fb;
+  margin-bottom: 15px;
+  transition: width .3s ease-in-out;
+}
+
+.clickable-quote.selected-quote {
+  width: 90%;
 }
 
 .quotes-tooltip {

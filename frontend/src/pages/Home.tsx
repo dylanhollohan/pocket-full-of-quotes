@@ -17,6 +17,7 @@ import { Quote, AddQuoteForm } from '../components';
 import './styles/Home.css';
 import { getQuotesRequest } from '../modules/quotes/state';
 import { RequestStatus } from '../modules/constants';
+import { AddQuoteSuccessPayload, AppQuote } from '../modules/quotes/types';
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
     props,
@@ -45,9 +46,11 @@ export const Home: React.FC = () => {
     const currentUser = useAppSelector(selectLoggedInUser);
     const addQuoteRequestStatus = useAppSelector(selectAddQuoteRequestStatus);
     const getQuotesRequestStatus = useAppSelector(selectAddQuoteRequestStatus);
-    const addedQuote = useAppSelector(selectAddedQuote);
-    const quotes = useAppSelector(selectQuotes);
+    const addedQuote: AddQuoteSuccessPayload | null = useAppSelector(selectAddedQuote);
+    const quotes: AppQuote[] = useAppSelector(selectQuotes);
     const [modalOpen, setModalOpen] = useState(false);
+    const [selectedQuotes, setSelectedQuotes] = useState<Record<string, AppQuote>>({});
+    console.log(selectedQuotes);
     const [toast, setToast] = useState<Toast>({
         display: false,
         text: null,
@@ -100,12 +103,25 @@ export const Home: React.FC = () => {
         });
     }
 
+    const handleQuoteClicked = (quote: AppQuote) => {
+        const prevRecord = {...selectedQuotes};
+        if (quote._id in prevRecord) {
+            delete prevRecord[quote._id]
+        } else {
+            prevRecord[quote._id] = quote;
+        }
+        setSelectedQuotes(prevRecord);
+    }
+
     return (
         <div className="quotes-flex">
             <div className="quotes-container">
                 {quotes.map((quote, index) => {
+                
                     return (
-                        <Quote quote={quote} key={`${quote.id}-${index}`}/>
+                        <button key={`${quote._id}-${index}`} className={`clickable-quote ${quote._id in selectedQuotes ? "selected-quote" : ""}`} onClick={() => handleQuoteClicked(quote)}>
+                            <Quote selected={quote._id in selectedQuotes} quote={quote} />
+                        </button>
                     )
                 })}
             </div>
