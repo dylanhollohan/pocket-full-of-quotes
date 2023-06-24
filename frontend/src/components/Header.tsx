@@ -42,6 +42,7 @@ const Header: React.FC = () => {
         
         { loggedInUser && 
           <Button
+            className='logout-button'
             variant={loggedInUser ? 'text' : 'outlined'}
             color="info"
             disabled={!loggedInUser}

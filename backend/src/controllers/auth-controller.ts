@@ -59,7 +59,6 @@ const logUserIn = async (req: Request, res: Response) => {
 }
 
 const logUserOut = async (req: Request, res: Response) => {
-  console.log('logout in backend')
   res.cookie('jwt', '', { maxAge: 1 });
   res.status(200).json({message: "logged out"});
 }

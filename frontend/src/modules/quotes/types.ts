@@ -1,7 +1,9 @@
 export type AddQuoteSuccessPayload = AddQuoteRequestPayload & {
-  id: string;
+  _id: string;
   timestamp: any;
 }
+
+export type AppQuote = AddQuoteSuccessPayload;
 
 export type AddQuoteRequestPayload = {
   author: string,

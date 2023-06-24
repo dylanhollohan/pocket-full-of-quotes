@@ -63,7 +63,7 @@ header img {
   width: 400px;
 }
 
-button {
+.logout-button {
   width: fit-content;
   align-self: flex-end;
 } /* which button is this for? I think the nav-bar exit*/ 
