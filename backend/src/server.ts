@@ -1,25 +1,9 @@
-import express, { Express, Request, Response } from 'express';
+import app from './app';
 import mongoose from 'mongoose';
 import { config } from 'dotenv';
-import cookieParser from 'cookie-parser';
-import cors from 'cors';
 
-import { quotesRouter, authRouter } from './routes'
 config();
-
-const app: Express = express();
 const port = process.env.PORT;
-const corsOptions = {
-    origin: ['http://localhost:8080'],
-    credentials: true,
-    exposedHeaders: ["Authorization"]
-}
-
-app.use(express.json());
-app.use(cookieParser());
-app.use(cors(corsOptions));
-app.use('/api/quotes', quotesRouter);
-app.use('/api/auth', authRouter);
 
 mongoose.connect(process.env.DB_URI || 'oops')
     .then(() => { 
